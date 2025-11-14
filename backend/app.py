@@ -246,7 +246,6 @@ async def extract_text_endpoint(
             file_path.unlink()
         raise HTTPException(500, f"Text extraction failed: {str(e)}")
 
-
 def cleanup_files(file_paths: List[Path]):
     """Background task to clean up temporary files"""
     for path in file_paths:
@@ -255,7 +254,6 @@ def cleanup_files(file_paths: List[Path]):
                 path.unlink()
         except Exception as e:
             print(f"Warning: Could not delete {path}: {e}")
-
 
 if __name__ == "__main__":
     import uvicorn

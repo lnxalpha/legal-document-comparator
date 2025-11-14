@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Document Comparator</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>📄 Legal Document Comparator</h1>
+            <p class="subtitle">Smart context-aware document verification with AI</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Upload Section -->
+            <section class="upload-section" id="uploadSection">
+                <div class="upload-grid">
+                    <!-- Document 1 -->
+                    <div class="upload-box">
+                        <h3>Document 1 (Physical/OCR)</h3>
+                        <div class="drop-zone" id="dropZone1">
+                            <div class="drop-zone-content">
+                                <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="17 8 12 3 7 8"></polyline>
+                                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                                </svg>
+                                <p class="drop-text">Drop file here or click to upload</p>
+                                <p class="file-types">PDF, PNG, JPG (max 10MB)</p>
+                                <input type="file" id="file1" accept=".pdf,.png,.jpg,.jpeg" hidden>
+                            </div>
+                            <div class="file-preview" id="preview1" style="display: none;">
+                                <p class="file-name"></p>
+                                <button class="remove-btn" onclick="removeFile(1)">✕</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Document 2 -->
+                    <div class="upload-box">
+                        <h3>Document 2 (Digital)</h3>
+                        <div class="drop-zone" id="dropZone2">
+                            <div class="drop-zone-content">
+                                <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="17 8 12 3 7 8"></polyline>
+                                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                                </svg>
+                                <p class="drop-text">Drop file here or click to upload</p>
+                                <p class="file-types">PDF, PNG, JPG (max 10MB)</p>
+                                <input type="file" id="file2" accept=".pdf,.png,.jpg,.jpeg" hidden>
+                            </div>
+                            <div class="file-preview" id="preview2" style="display: none;">
+                                <p class="file-name"></p>
+                                <button class="remove-btn" onclick="removeFile(2)">✕</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="compare-btn" id="compareBtn" disabled>
+                    <span class="btn-icon">🔍</span>
+                    Compare with AI
+                </button>
+
+                <div class="loading" id="loading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p id="loadingText">Processing documents...</p>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <div class="results-header">
+                    <h2>Comparison Results</h2>
+                    <button class="secondary-btn" onclick="resetComparison()">New Comparison</button>
+                </div>
+
+                <!-- Overall Match -->
+                <div class="verdict-card" id="verdictCard">
+                    <div class="verdict-score">
+                        <div class="score-circle">
+                            <span class="score-value" id="scoreValue">0%</span>
+                        </div>
+                        <div class="verdict-details">
+                            <h3 id="verdictMessage">---</h3>
+                            <p id="verdictDescription">---</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Statistics -->
+                <div class="stats-grid" id="statsGrid">
+                    <div class="stat-card">
+                        <span class="stat-value" id="statMatched">0</span>
+                        <span class="stat-label">Matched Sentences</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value" id="statExact">0</span>
+                        <span class="stat-label">Exact Matches</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value" id="statDifferences">0</span>
+                        <span class="stat-label">Differences Found</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value" id="statReorderings">0</span>
+                        <span class="stat-label">Reorderings</span>
+                    </div>
+                </div>
+
+                <!-- Recommendations -->
+                <div class="recommendations" id="recommendations" style="display: none;">
+                    <h3>📌 Recommendations</h3>
+                    <ul id="recommendationsList"></ul>
+                </div>
+
+                <!-- Differences List -->
+                <div class="differences-container" id="differencesContainer">
+                    <h3>Detailed Differences (<span id="diffCount">0</span>)</h3>
+                    <div id="differencesList"></div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>Free tier: Up to 10 pages per comparison | Processing time: ~5-10 seconds per page</p>
+        </footer>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

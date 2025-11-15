@@ -27,7 +27,7 @@ def chunk_into_sentences(text: str) -> List[Dict[str, any]]:
         return []
     
     # Load spaCy model
-    nlp = ModelConfig.get_spacy()
+    nlp = ModelConfig.get_spacy_model()
     
     # Process text
     doc = nlp(text)

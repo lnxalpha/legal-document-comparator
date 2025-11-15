@@ -17,7 +17,7 @@ COPY backend/requirements.txt .
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Download spaCy model
+# Download spaCy model (small, only ~50MB)
 RUN python -m spacy download en_core_web_sm
 
 # Copy application code
@@ -39,5 +39,5 @@ ENV RENDER=true
 # Expose port (Render uses 10000 by default)
 EXPOSE 10000
 
-# Run the application with proper settings for Render
-CMD exec uvicorn app:app --host 0.0.0.0 --port ${PORT:-10000} --workers 1
+# Run the application with minimal memory footprint
+CMD exec uvicorn app:app --host 0.0.0.0 --port ${PORT:-10000} --workers 1 --timeout-keep-alive 30

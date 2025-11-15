@@ -1,10 +1,38 @@
+# Render.com deployment configuration
+
 services:
   - type: web
     name: legal-document-comparator
-    env: python
-    plan: free
-    buildCommand: pip install -r backend/requirements.txt
-    startCommand: uvicorn backend.app:app --host 0.0.0.0 --port $PORT
+    env: docker
+    plan: free  # or 'starter' for $7/month (recommended for production)
+    dockerfilePath: ./Dockerfile
+
+    # Render-specific settings
+    region: oregon  # Choose closest to your users
+
+    # Environment variables
     envVars:
-      - key: PYTHON_VERSION
-        value: 3.11.0
+      - key: DEBUG
+        value: false
+      - key: HOST
+        value: 0.0.0.0
+      - key: PORT
+        value: 10000
+      - key: SIMILARITY_THRESHOLD
+        value: 0.85
+      - key: CONTEXT_WINDOW
+        value: 2
+      - key: RENDER
+        value: true
+
+    # Health check endpoint
+    healthCheckPath: /api/health
+
+    # Auto-deploy from main branch
+    autoDeploy: true
+
+    # Disk storage for uploads (temporary)
+    disk:
+      name: uploads
+      mountPath: /app/uploads
+      sizeGB: 1

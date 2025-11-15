@@ -48,23 +48,20 @@ class Config:
         cls.UPLOAD_DIR.mkdir(exist_ok=True)
         cls.STATIC_DIR.mkdir(exist_ok=True)
 
-        # Create .gitkeep in uploads
         gitkeep = cls.UPLOAD_DIR / ".gitkeep"
         gitkeep.touch(exist_ok=True)
 
     @classmethod
     def is_production(cls) -> bool:
         """Check if running in production environment"""
-        return os.getenv("RENDER", False) or not cls.DEBUG
+        # Render sets RENDER=true
+        return os.getenv("RENDER", "").lower() == "true"
 
     @classmethod
     def get_frontend_url(cls) -> str:
-        """Get the appropriate frontend URL"""
         if cls.is_production():
-            # In production, frontend is served by same backend
             return ""
         else:
-            # Local development
             return f"http://localhost:{cls.PORT}"
 
     @classmethod
@@ -74,14 +71,12 @@ class Config:
 
     @classmethod
     def get_temp_filepath(cls, filename: str) -> Path:
-        """Generate temporary file path for uploads"""
         import uuid
         safe_filename = f"{uuid.uuid4()}_{filename}"
         return cls.UPLOAD_DIR / safe_filename
 
     @classmethod
     def cleanup_old_files(cls, max_age_hours: int = 24):
-        """Remove old uploaded files"""
         import time
         current_time = time.time()
 
@@ -97,27 +92,29 @@ class Config:
                     print(f"Warning: Could not delete {filepath}: {e}")
 
 
+# -------------------------
+# MODEL CONFIG
+# -------------------------
+
 import spacy
-from spacy.util import is_package, get_package_path
-import subprocess
-import sys
-from backend.config import Config
 from sentence_transformers import SentenceTransformer
 
 class ModelConfig:
-    _sentence_model = None  # class-level variable
+    _sentence_model = None
     _spacy_model = None
 
     @staticmethod
     def get_spacy_model(model_name="en_core_web_sm"):
-        """Load spaCy model, auto-download if missing"""
+        """
+        Load spaCy model.
+        IMPORTANT: No auto-install here! Render cannot install packages at runtime.
+        The model MUST be listed explicitly in requirements.txt.
+        """
         try:
-            if not is_package(model_name):
-                print(f"⚠️ spaCy model {model_name} not found. Installing...")
-                subprocess.check_call([sys.executable, "-m", "spacy", "download", model_name])
             return spacy.load(model_name)
         except Exception as e:
-            print(f"❌ Failed to load spaCy model {model_name}: {e}")
+            print(f"❌ spaCy model '{model_name}' failed to load: {e}")
+            print("➡ Make sure it is listed in requirements.txt!")
             return None
 
     @classmethod
@@ -125,19 +122,18 @@ class ModelConfig:
         """Lazy load sentence transformer model"""
         if cls._sentence_model is None:
             print(f"Loading embedding model: {Config.SENTENCE_TRANSFORMER_MODEL}")
-            print("(This may take a minute on first run...)")
             cls._sentence_model = SentenceTransformer(Config.SENTENCE_TRANSFORMER_MODEL)
             print("✓ Loaded embedding model")
         return cls._sentence_model
 
     @classmethod
     def preload_models(cls):
-        """Preload all models (useful for production)"""
+        """Preload all models in production"""
         print("Preloading ML models...")
-        cls._spacy_model = cls.get_spacy_model()
+        cls._spacy_model = cls.get_spacy_model(Config.SPACY_MODEL)
         cls.get_sentence_transformer()
         print("✓ All models loaded")
 
 
-# Initialize directories on import
+# Initialize directories
 Config.ensure_directories()

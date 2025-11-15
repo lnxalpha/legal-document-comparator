@@ -48,7 +48,7 @@ async def startup_event():
     else:
         print("Development mode: Models will load on first use")
 
-    # Schedule periodic cleanup
+    # Info
     print(f"Upload directory: {Config.UPLOAD_DIR}")
     print(f"Max file size: {Config.MAX_UPLOAD_SIZE / 1024 / 1024:.1f}MB")
     print(f"Allowed extensions: {', '.join(Config.ALLOWED_EXTENSIONS)}")
@@ -61,7 +61,7 @@ async def startup_event():
 async def shutdown_event():
     """Cleanup on shutdown"""
     print("\n🛑 Shutting down...")
-    Config.cleanup_old_files(max_age_hours=1)  # Clean recent files on shutdown
+    Config.cleanup_old_files(max_age_hours=1)
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -111,19 +111,13 @@ async def get_config():
 @app.post("/api/compare")
 async def compare_documents(
     background_tasks: BackgroundTasks,
-    file1: UploadFile = File(..., description="First document (digital/OCR)"),
-    file2: UploadFile = File(..., description="Second document (digital/OCR)")
+    file1: UploadFile = File(...),
+    file2: UploadFile = File(...)
 ):
     """
     Compare two documents using smart semantic matching
-
-    Returns:
-        - overall_match: Percentage match (0-100)
-        - matched_sentences: Number of matching sentences
-        - total_sentences: Total unique sentences
-        - differences: List of mismatches with context
-        - processing_time: Time taken in seconds
     """
+
     import time
     start_time = time.time()
 
@@ -133,119 +127,95 @@ async def compare_documents(
     if not Config.validate_file(file2.filename):
         raise HTTPException(400, f"Invalid file type: {file2.filename}")
 
-    # Save uploaded files temporarily
+    # Save files
     try:
         file1_path = Config.get_temp_filepath(file1.filename)
         file2_path = Config.get_temp_filepath(file2.filename)
 
-        # Save files
         with open(file1_path, "wb") as f:
             content = await file1.read()
             if len(content) > Config.MAX_UPLOAD_SIZE:
-                raise HTTPException(400, f"File too large: {file1.filename}")
+                raise HTTPException(400, "File too large")
             f.write(content)
 
         with open(file2_path, "wb") as f:
             content = await file2.read()
             if len(content) > Config.MAX_UPLOAD_SIZE:
-                raise HTTPException(400, f"File too large: {file2.filename}")
+                raise HTTPException(400, "File too large")
             f.write(content)
 
-        # Import comparison engine (lazy import to speed up startup)
+        # Lazy imports
         from backend.comparison_engine.text_extractor import extract_text
         from backend.comparison_engine.smart_chunker import chunk_into_sentences
         from backend.comparison_engine.semantic_matcher import match_documents
         from backend.comparison_engine.report_generator import generate_report
 
-        # Step 1: Extract text
-        print(f"📄 Extracting text from {file1.filename}...")
+        # Extract text
         text1 = await extract_text(file1_path)
-
-        print(f"📄 Extracting text from {file2.filename}...")
         text2 = await extract_text(file2_path)
 
         if not text1 or not text2:
-            raise HTTPException(400, "Could not extract text from one or both documents")
+            raise HTTPException(400, "Could not extract text")
 
-        # Step 2: Chunk into sentences
-        print("✂️  Chunking into sentences...")
+        # Chunk
         sentences1 = chunk_into_sentences(text1)
         sentences2 = chunk_into_sentences(text2)
 
-        print(f"   Document 1: {len(sentences1)} sentences")
-        print(f"   Document 2: {len(sentences2)} sentences")
-
-        # Step 3: Semantic matching
-        print("🧠 Performing semantic matching...")
+        # Semantic matching
         matches = match_documents(sentences1, sentences2)
 
-        # Step 4: Generate report
-        print("📊 Generating report...")
+        # Report
         report = generate_report(matches, sentences1, sentences2)
+        report["processing_time"] = round(time.time() - start_time, 2)
 
-        processing_time = time.time() - start_time
-        report["processing_time"] = round(processing_time, 2)
-        report["file1_name"] = file1.filename
-        report["file2_name"] = file2.filename
-
-        print(f"✓ Comparison complete in {processing_time:.2f}s")
-        report["overall_match"] = report["summary"]["overall_match"]
-        print(f"  Match: {report['overall_match']:.1f}%")
-
-        # Schedule cleanup of uploaded files
+        # Cleanup
         background_tasks.add_task(cleanup_files, [file1_path, file2_path])
 
         return JSONResponse(content=report)
 
     except Exception as e:
-        # Clean up files on error
-        for path in [file1_path, file2_path]:
-            if path.exists():
-                path.unlink()
-
-        print(f"❌ Error: {str(e)}")
+        # Cleanup on error
+        for p in [file1_path, file2_path]:
+            if p.exists():
+                p.unlink()
         raise HTTPException(500, f"Comparison failed: {str(e)}")
 
 
 @app.post("/api/extract-text")
 async def extract_text_endpoint(
     background_tasks: BackgroundTasks,
-    file: UploadFile = File(..., description="Document to extract text from")
+    file: UploadFile = File(...)
 ):
-    """
-    Extract text from a document (useful for testing OCR)
-    """
+    """Extract text from a document"""
+
     if not Config.validate_file(file.filename):
         raise HTTPException(400, f"Invalid file type: {file.filename}")
 
     try:
         file_path = Config.get_temp_filepath(file.filename)
 
-        # Save file
         with open(file_path, "wb") as f:
             content = await file.read()
-            if len(content) > Config.MAX_UPLOAD_SIZE:
-                raise HTTPException(400, "File too large")
             f.write(content)
 
-        # Extract text
-        from comparison_engine.text_extractor import extract_text
+        # Correct import (FIXED)
+        from backend.comparison_engine.text_extractor import extract_text
+
         text = await extract_text(file_path)
 
-        # Cleanup
         background_tasks.add_task(cleanup_files, [file_path])
 
         return {
             "filename": file.filename,
             "text": text,
             "length": len(text),
-            "preview": text[:500] + "..." if len(text) > 500 else text
         }
 
     except Exception as e:
         if file_path.exists():
             file_path.unlink()
         raise HTTPException(500, f"Text extraction failed: {str(e)}")
+
 
 def cleanup_files(file_paths: List[Path]):
     """Background task to clean up temporary files"""
@@ -256,11 +226,11 @@ def cleanup_files(file_paths: List[Path]):
         except Exception as e:
             print(f"Warning: Could not delete {path}: {e}")
 
+
 if __name__ == "__main__":
     import uvicorn
-
     uvicorn.run(
-        "app:app",
+        "backend.app:app",
         host=Config.HOST,
         port=Config.PORT,
         reload=Config.DEBUG,

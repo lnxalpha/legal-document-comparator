@@ -17,7 +17,7 @@ class Config:
 
     # Server settings
     HOST: str = os.getenv("HOST", "127.0.0.1")
-    PORT: int = int(os.getenv("PORT", 8000))
+    PORT: int = int(os.getenv("PORT", 10000))
     DEBUG: bool = os.getenv("DEBUG", "True").lower() == "true"
 
     # File upload settings
@@ -54,12 +54,12 @@ class Config:
     @classmethod
     def is_production(cls) -> bool:
         """Check if running in production environment"""
-        # Render sets RENDER=true
-        return os.getenv("RENDER", "").lower() == "true"
+        return os.getenv("RENDER", False) or not cls.DEBUG
 
     @classmethod
     def get_frontend_url(cls) -> str:
         if cls.is_production():
+            # In production, frontend is served by same backend
             return ""
         else:
             return f"http://localhost:{cls.PORT}"

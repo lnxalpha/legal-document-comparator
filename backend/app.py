@@ -152,10 +152,10 @@ async def compare_documents(
             f.write(content)
 
         # Import comparison engine (lazy import to speed up startup)
-        from comparison_engine.text_extractor import extract_text
-        from comparison_engine.smart_chunker import chunk_into_sentences
-        from comparison_engine.semantic_matcher import match_documents
-        from comparison_engine.report_generator import generate_report
+        from backend.comparison_engine.text_extractor import extract_text
+        from backend.comparison_engine.smart_chunker import chunk_into_sentences
+        from backend.comparison_engine.semantic_matcher import match_documents
+        from backend.comparison_engine.report_generator import generate_report
 
         # Step 1: Extract text
         print(f"📄 Extracting text from {file1.filename}...")

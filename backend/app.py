@@ -44,8 +44,7 @@ async def startup_event():
     # Preload models in production for faster first request
     if Config.is_production():
         print("Production mode: Preloading ML models...")
-#        ModelConfig.preload_models()
-    ModelConfig.get_spacy()  # triggers auto-download if missing
+        ModelConfig.preload_models()
     else:
         print("Development mode: Models will load on first use")
 

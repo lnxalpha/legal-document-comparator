@@ -4,7 +4,7 @@ Intelligently segments text into sentences for comparison
 """
 
 from typing import List, Dict
-from backend.config import ModelConfig, Config
+from .comparison_engine.config import ModelConfig, Config
 
 
 def chunk_into_sentences(text: str) -> List[Dict[str, any]]:

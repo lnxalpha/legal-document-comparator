@@ -97,24 +97,26 @@ class Config:
                     print(f"Warning: Could not delete {filepath}: {e}")
 
 
-class ModelConfig:
-    """ML Model configuration and lazy loading"""
+import spacy
+import subprocess
+from backend.config import Config
 
+class ModelConfig:
     _spacy_nlp = None
-    _sentence_model = None
 
     @classmethod
     def get_spacy(cls):
-        """Lazy load spaCy model"""
         if cls._spacy_nlp is None:
-            import spacy
             try:
                 cls._spacy_nlp = spacy.load(Config.SPACY_MODEL)
-                print(f"✓ Loaded spaCy model: {Config.SPACY_MODEL}")
             except OSError:
-                print(f"⚠️  Model {Config.SPACY_MODEL} not found!")
-                print("   Run: python -m spacy download en_core_web_sm")
-                raise
+                # Only auto-download if running in production
+                if Config.is_production():
+                    print(f"⚠️  Model {Config.SPACY_MODEL} not found. Downloading...")
+                    subprocess.run(["python", "-m", "spacy", "download", Config.SPACY_MODEL], check=True)
+                    cls._spacy_nlp = spacy.load(Config.SPACY_MODEL)
+                else:
+                    raise  # Let local dev fail so you install manually
         return cls._spacy_nlp
 
     @classmethod

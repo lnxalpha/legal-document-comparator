@@ -97,10 +97,8 @@ class Config:
 # -------------------------
 
 import spacy
-from sentence_transformers import SentenceTransformer
 
 class ModelConfig:
-    _sentence_model = None
     _spacy_model = None
 
     @staticmethod
@@ -116,15 +114,6 @@ class ModelConfig:
             print(f"❌ spaCy model '{model_name}' failed to load: {e}")
             print("➡ Make sure it is listed in requirements.txt!")
             return None
-
-    @classmethod
-    def get_sentence_transformer(cls):
-        """Lazy load sentence transformer model"""
-        if cls._sentence_model is None:
-            print(f"Loading embedding model: {Config.SENTENCE_TRANSFORMER_MODEL}")
-            cls._sentence_model = SentenceTransformer(Config.SENTENCE_TRANSFORMER_MODEL)
-            print("✓ Loaded embedding model")
-        return cls._sentence_model
 
     @classmethod
     def preload_models(cls):

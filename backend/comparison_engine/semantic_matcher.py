@@ -41,9 +41,9 @@ def match_documents(
     texts2 = [s["text"] for s in sentences2]
     
     # Get embeddings
-    model = ModelConfig.get_sentence_transformer()
-    embeddings1 = model.encode(texts1, show_progress_bar=False)
-    embeddings2 = model.encode(texts2, show_progress_bar=False)
+#    model = ModelConfig.get_sentence_transformer()
+#    embeddings1 = model.encode(texts1, show_progress_bar=False)
+#    embeddings2 = model.encode(texts2, show_progress_bar=False)
     
     print(f"   Finding best matches...")
     

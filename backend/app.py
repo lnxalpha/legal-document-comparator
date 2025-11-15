@@ -11,7 +11,7 @@ from typing import List, Dict, Any
 import asyncio
 from pathlib import Path
 
-from config import Config, ModelConfig
+from backend.config import Config, ModelConfig
 
 # Initialize FastAPI app
 app = FastAPI(

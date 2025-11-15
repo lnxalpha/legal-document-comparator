@@ -189,6 +189,7 @@ async def compare_documents(
         report["file2_name"] = file2.filename
 
         print(f"✓ Comparison complete in {processing_time:.2f}s")
+        report["overall_match"] = report["summary"]["overall_match"]
         print(f"  Match: {report['overall_match']:.1f}%")
 
         # Schedule cleanup of uploaded files

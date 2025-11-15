@@ -117,7 +117,7 @@ def extract_from_docx(file_path: Path) -> str:
     Extract text from DOCX using python-docx
     """
     try:
-        from python_docx import Document
+        from docx import Document
         doc = Document(file_path)
         full_text = "\n".join([para.text for para in doc.paragraphs])
         return clean_extracted_text(full_text)

@@ -73,17 +73,37 @@ function setupFileInputs() {
 function handleFileSelect(file, num) {
     // Validate file
     const maxSize = 10 * 1024 * 1024; // 10MB
-    const allowedTypes = ['application/pdf', 'image/png', 'image/jpeg', 'image/jpg'];
-    
+    const allowedTypes = [
+        'application/pdf',
+        'image/png',
+        'image/jpeg',
+        'image/jpg',
+        'application/msword', // DOC
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document', // DOCX
+        'application/octet-stream' // fallback
+    ];
+
+    // Validate file type
+    if (!allowedTypes.includes(file.type)) {
+        // special handling for DOC/DOCX disguised as octet-stream
+        const isDocOrDocx =
+            file.name.toLowerCase().endsWith('.doc') ||
+            file.name.toLowerCase().endsWith('.docx');
+
+        if (file.type === 'application/octet-stream' && isDocOrDocx) {
+            // allow it
+        } else {
+            alert('Invalid file type. Please upload PDF, DOC, DOCX, PNG, or JPG files.');
+            return;
+        }
+    }
+
+    // Validate file size
     if (file.size > maxSize) {
         alert('File is too large. Maximum size is 10MB.');
         return;
     }
 
-    if (!allowedTypes.includes(file.type)) {
-        alert('Invalid file type. Please upload PDF, PNG, or JPG files.');
-        return;
-    }
 
     // Store file
     if (num === 1) {

@@ -22,9 +22,7 @@ class Config:
 
     # File upload settings
     MAX_UPLOAD_SIZE: int = int(os.getenv("MAX_UPLOAD_SIZE", 10 * 1024 * 1024))  # 10MB
-    ALLOWED_EXTENSIONS: set = {
-        "pdf", "png", "jpg", "jpeg", "txt", "doc", "docx"
-    }
+    ALLOWED_EXTENSIONS: set = {".pdf", ".png", ".jpg", ".jpeg", ".txt", ".doc", ".docx"}
 
     # Model settings
     SPACY_MODEL: str = os.getenv("SPACY_MODEL", "en_core_web_sm")
@@ -71,9 +69,8 @@ class Config:
 
     @classmethod
     def validate_file(cls, filename: str) -> bool:
-        """Check if file extension is allowed"""
-        return '.' in filename and \
-               filename.rsplit('.', 1)[1].lower() in cls.ALLOWED_EXTENSIONS
+        ext = Path(filename).suffix.lower()
+        return ext in cls.ALLOWED_EXTENSIONS
 
     @classmethod
     def get_temp_filepath(cls, filename: str) -> Path:

@@ -8,7 +8,7 @@ import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 
 from backend.config import ModelConfig, Config
-from comparison_engine.smart_chunker import normalize_sentence
+from .comparison_engine.smart_chunker import normalize_sentence
 
 
 def match_documents(

@@ -91,7 +91,7 @@ async def health_check():
         "status": "healthy",
         "environment": "production" if Config.is_production() else "development",
         "models_loaded": {
-            "spacy": ModelConfig._spacy_nlp is not None,
+            "spacy": ModelConfig._spacy_model is not None,
             "sentence_transformer": ModelConfig._sentence_model is not None
         }
     }

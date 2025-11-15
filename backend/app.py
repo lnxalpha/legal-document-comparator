@@ -44,7 +44,11 @@ async def startup_event():
     # Preload models in production for faster first request
     if Config.is_production():
         print("Production mode: Preloading ML models...")
-        ModelConfig.preload_models()
+        try:
+            ModelConfig.preload_models()
+        except Exception as e:
+            print(f"⚠️  Warning: Could not preload models: {e}")
+            print("Models will load on first comparison request")
     else:
         print("Development mode: Models will load on first use")
 
@@ -166,25 +170,43 @@ async def compare_documents(
 
         # Report
         report = generate_report(matches, sentences1, sentences2)
-        report["processing_time"] = round(time.time() - start_time, 2)
 
+        processing_time = time.time() - start_time
+        report["processing_time"] = round(processing_time, 2)
+        report["file1_name"] = file1.filename
+        report["file2_name"] = file2.filename
+
+        print(f"✓ Comparison complete in {processing_time:.2f}s")
+        print(f"  Match: {report['overall_match']:.1f}%")
+        
         # Cleanup
         background_tasks.add_task(cleanup_files, [file1_path, file2_path])
 
         return JSONResponse(content=report)
 
     except Exception as e:
-        # Cleanup on error
-        for p in [file1_path, file2_path]:
-            if p.exists():
-                p.unlink()
-        raise HTTPException(500, f"Comparison failed: {str(e)}")
+        # Clean up files on error
+        try:
+            for path in [file1_path, file2_path]:
+                if path and path.exists():
+                    path.unlink()
+        except:
+            pass
+        
+        print(f"❌ Error: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        
+        raise HTTPException(
+            status_code=500, 
+            detail=f"Comparison failed: {str(e)}"
+        )
 
 
 @app.post("/api/extract-text")
 async def extract_text_endpoint(
     background_tasks: BackgroundTasks,
-    file: UploadFile = File(...)
+    file: UploadFile = File(..., description="Document to extract text from")
 ):
     """Extract text from a document"""
 
@@ -196,6 +218,8 @@ async def extract_text_endpoint(
 
         with open(file_path, "wb") as f:
             content = await file.read()
+            if len(content) > Config.MAX_UPLOAD_SIZE:
+                raise HTTPException(400, "File too large")
             f.write(content)
 
         # Correct import (FIXED)
@@ -209,6 +233,7 @@ async def extract_text_endpoint(
             "filename": file.filename,
             "text": text,
             "length": len(text),
+            "preview": text[:500] + "..." if len(text) > 500 else text
         }
 
     except Exception as e:

@@ -98,44 +98,43 @@ class Config:
 
 
 import spacy
+from spacy.util import is_package, get_package_path
 import subprocess
+import sys
 from backend.config import Config
+from sentence_transformers import SentenceTransformer
 
 class ModelConfig:
-    _spacy_nlp = None
-    _sentence_model = None  # <-- add this
+    _sentence_model = None  # class-level variable
+    _spacy_model = None
 
-    @classmethod
-    def get_spacy(cls):
-        if cls._spacy_nlp is None:
-            try:
-                cls._spacy_nlp = spacy.load(Config.SPACY_MODEL)
-            except OSError:
-                # Only auto-download if running in production
-                if Config.is_production():
-                    print(f"⚠️  Model {Config.SPACY_MODEL} not found. Downloading...")
-                    subprocess.run(["python", "-m", "spacy", "download", Config.SPACY_MODEL], check=True)
-                    cls._spacy_nlp = spacy.load(Config.SPACY_MODEL)
-                else:
-                    raise  # Let local dev fail so you install manually
-        return cls._spacy_nlp
+    @staticmethod
+    def get_spacy_model(model_name="en_core_web_sm"):
+        """Load spaCy model, auto-download if missing"""
+        try:
+            if not is_package(model_name):
+                print(f"⚠️ spaCy model {model_name} not found. Installing...")
+                subprocess.check_call([sys.executable, "-m", "spacy", "download", model_name])
+            return spacy.load(model_name)
+        except Exception as e:
+            print(f"❌ Failed to load spaCy model {model_name}: {e}")
+            return None
 
     @classmethod
     def get_sentence_transformer(cls):
         """Lazy load sentence transformer model"""
         if cls._sentence_model is None:
-            from sentence_transformers import SentenceTransformer
             print(f"Loading embedding model: {Config.SENTENCE_TRANSFORMER_MODEL}")
             print("(This may take a minute on first run...)")
             cls._sentence_model = SentenceTransformer(Config.SENTENCE_TRANSFORMER_MODEL)
-            print(f"✓ Loaded embedding model")
+            print("✓ Loaded embedding model")
         return cls._sentence_model
 
     @classmethod
     def preload_models(cls):
         """Preload all models (useful for production)"""
         print("Preloading ML models...")
-        cls.get_spacy()
+        cls._spacy_model = cls.get_spacy_model()
         cls.get_sentence_transformer()
         print("✓ All models loaded")
 

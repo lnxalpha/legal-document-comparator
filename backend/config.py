@@ -103,6 +103,7 @@ from backend.config import Config
 
 class ModelConfig:
     _spacy_nlp = None
+    _sentence_model = None  # <-- add this
 
     @classmethod
     def get_spacy(cls):
@@ -126,9 +127,7 @@ class ModelConfig:
             from sentence_transformers import SentenceTransformer
             print(f"Loading embedding model: {Config.SENTENCE_TRANSFORMER_MODEL}")
             print("(This may take a minute on first run...)")
-            cls._sentence_model = SentenceTransformer(
-                Config.SENTENCE_TRANSFORMER_MODEL
-            )
+            cls._sentence_model = SentenceTransformer(Config.SENTENCE_TRANSFORMER_MODEL)
             print(f"✓ Loaded embedding model")
         return cls._sentence_model
 

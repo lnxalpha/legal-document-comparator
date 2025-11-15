@@ -4,7 +4,7 @@ Creates detailed comparison reports from match results
 """
 
 from typing import List, Dict
-from .comparison_engine.semantic_matcher import (
+from backend.comparison_engine.semantic_matcher import (
     classify_difference, 
     analyze_match_quality,
     find_potential_reorderings,

@@ -7,7 +7,7 @@ from typing import List, Dict, Tuple, Optional
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 
-from config import ModelConfig, Config
+from backend.config import ModelConfig, Config
 from comparison_engine.smart_chunker import normalize_sentence
 
 

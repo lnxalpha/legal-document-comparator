@@ -1,0 +1,68 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2025-11-27T18:39:55.800085",
+    "description": "Common OCR errors in Nigerian legal documents"
+  },
+  "word_level": {
+    "herby": "hereby",
+    "herein": "herein",
+    "plaintif": "plaintiff",
+    "defendent": "defendant",
+    "judgement": "judgment",
+    "afidavit": "affidavit",
+    "commisioner": "commissioner",
+    "agr33ment": "agreement",
+    "c0ntract": "contract",
+    "resp0ndent": "respondent",
+    "appe11ant": "appellant",
+    "jur1sdiction": "jurisdiction"
+  },
+  "character_level": {
+    "O0": {
+      "error": "O",
+      "correct": "0",
+      "context": "numbers"
+    },
+    "0O": {
+      "error": "0",
+      "correct": "O",
+      "context": "words"
+    },
+    "l1": {
+      "error": "l",
+      "correct": "1",
+      "context": "numbers"
+    },
+    "1l": {
+      "error": "1",
+      "correct": "l",
+      "context": "words"
+    },
+    "S5": {
+      "error": "S",
+      "correct": "5",
+      "context": "numbers"
+    },
+    "5S": {
+      "error": "5",
+      "correct": "S",
+      "context": "words"
+    },
+    "I1": {
+      "error": "I",
+      "correct": "1",
+      "context": "numbers"
+    },
+    "Z2": {
+      "error": "Z",
+      "correct": "2",
+      "context": "numbers"
+    },
+    "B8": {
+      "error": "B",
+      "correct": "8",
+      "context": "numbers"
+    }
+  }
+}

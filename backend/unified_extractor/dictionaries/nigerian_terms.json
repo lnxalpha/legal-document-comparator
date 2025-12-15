@@ -1,0 +1,56 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2025-11-27T18:39:55.800085",
+    "description": "Nigerian legal system specific terms"
+  },
+  "terms": {
+    "learned_silk": {
+      "definition": "Senior Advocate of Nigeria (SAN)"
+    },
+    "SAN": {
+      "full": "Senior Advocate of Nigeria",
+      "frequency": "very_high"
+    },
+    "JSC": {
+      "full": "Justice of the Supreme Court"
+    },
+    "JCA": {
+      "full": "Justice of the Court of Appeal"
+    },
+    "FCT": {
+      "full": "Federal Capital Territory (Abuja)"
+    },
+    "NWLR": {
+      "full": "Nigeria Weekly Law Reports"
+    },
+    "LPELR": {
+      "full": "Laws of the Federation Electronic Law Reports"
+    },
+    "LSFR": {
+      "full": "Lagos State Law Reports"
+    },
+    "AG": {
+      "full": "Attorney General"
+    },
+    "DPP": {
+      "full": "Director of Public Prosecutions"
+    },
+    "EFCC": {
+      "full": "Economic and Financial Crimes Commission"
+    },
+    "ICPC": {
+      "full": "Independent Corrupt Practices Commission"
+    },
+    "NBA": {
+      "full": "Nigerian Bar Association"
+    },
+    "Legal_Practitioners_Act": {
+      "year": "2004",
+      "type": "Federal Act"
+    },
+    "Constitution": {
+      "full": "Constitution of the Federal Republic of Nigeria 1999 (as amended)"
+    }
+  }
+}

@@ -17,7 +17,7 @@ class Config:
 
     # Server settings
     HOST: str = os.getenv("HOST", "127.0.0.1")
-    PORT: int = int(os.getenv("PORT", 10000))
+    PORT: int = int(os.getenv("PORT", 8000))
     DEBUG: bool = os.getenv("DEBUG", "True").lower() == "true"
 
     # File upload settings
@@ -48,6 +48,7 @@ class Config:
         cls.UPLOAD_DIR.mkdir(exist_ok=True)
         cls.STATIC_DIR.mkdir(exist_ok=True)
 
+        # Create .gitkeep in uploads
         gitkeep = cls.UPLOAD_DIR / ".gitkeep"
         gitkeep.touch(exist_ok=True)
 
@@ -58,10 +59,12 @@ class Config:
 
     @classmethod
     def get_frontend_url(cls) -> str:
+        """Get the appropriate frontend URL"""
         if cls.is_production():
             # In production, frontend is served by same backend
             return ""
         else:
+            # Local development
             return f"http://localhost:{cls.PORT}"
 
     @classmethod
@@ -71,12 +74,14 @@ class Config:
 
     @classmethod
     def get_temp_filepath(cls, filename: str) -> Path:
+        """Generate temporary file path for uploads"""
         import uuid
         safe_filename = f"{uuid.uuid4()}_{filename}"
         return cls.UPLOAD_DIR / safe_filename
 
     @classmethod
     def cleanup_old_files(cls, max_age_hours: int = 24):
+        """Remove old uploaded files"""
         import time
         current_time = time.time()
 
@@ -92,48 +97,47 @@ class Config:
                     print(f"Warning: Could not delete {filepath}: {e}")
 
 
-# -------------------------
-# MODEL CONFIG
-# -------------------------
-
-import spacy
-from sentence_transformers import SentenceTransformer
-
 class ModelConfig:
-    _sentence_model = None
-    _spacy_model = None
+    """ML Model configuration and lazy loading"""
 
-    @staticmethod
-    def get_spacy_model(model_name="en_core_web_sm"):
-        """
-        Load spaCy model.
-        IMPORTANT: No auto-install here! Render cannot install packages at runtime.
-        The model MUST be listed explicitly in requirements.txt.
-        """
-        try:
-            return spacy.load(model_name)
-        except Exception as e:
-            print(f"❌ spaCy model '{model_name}' failed to load: {e}")
-            print("➡ Make sure it is listed in requirements.txt!")
-            return None
+    _spacy_nlp = None
+    _sentence_model = None
+
+    @classmethod
+    def get_spacy(cls):
+        """Lazy load spaCy model"""
+        if cls._spacy_nlp is None:
+            import spacy
+            try:
+                cls._spacy_nlp = spacy.load(Config.SPACY_MODEL)
+                print(f"✓ Loaded spaCy model: {Config.SPACY_MODEL}")
+            except OSError:
+                print(f"⚠️  Model {Config.SPACY_MODEL} not found!")
+                print("   Run: python -m spacy download en_core_web_sm")
+                raise
+        return cls._spacy_nlp
 
     @classmethod
     def get_sentence_transformer(cls):
         """Lazy load sentence transformer model"""
         if cls._sentence_model is None:
+            from sentence_transformers import SentenceTransformer
             print(f"Loading embedding model: {Config.SENTENCE_TRANSFORMER_MODEL}")
-            cls._sentence_model = SentenceTransformer(Config.SENTENCE_TRANSFORMER_MODEL)
-            print("✓ Loaded embedding model")
+            print("(This may take a minute on first run...)")
+            cls._sentence_model = SentenceTransformer(
+                Config.SENTENCE_TRANSFORMER_MODEL
+            )
+            print(f"✓ Loaded embedding model")
         return cls._sentence_model
 
     @classmethod
     def preload_models(cls):
-        """Preload all models in production"""
+        """Preload all models (useful for production)"""
         print("Preloading ML models...")
-        cls._spacy_model = cls.get_spacy_model(Config.SPACY_MODEL)
+        cls.get_spacy()
         cls.get_sentence_transformer()
         print("✓ All models loaded")
 
 
-# Initialize directories
+# Initialize directories on import
 Config.ensure_directories()

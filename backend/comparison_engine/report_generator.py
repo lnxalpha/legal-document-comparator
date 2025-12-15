@@ -4,8 +4,8 @@ Creates detailed comparison reports from match results
 """
 
 from typing import List, Dict
-from backend.comparison_engine.semantic_matcher import (
-    classify_difference, 
+from comparison_engine.semantic_matcher import (
+    classify_difference,
     analyze_match_quality,
     find_potential_reorderings,
     suggest_corrections
@@ -19,7 +19,7 @@ def generate_report(
 ) -> Dict:
     """
     Generate a comprehensive comparison report
-    
+
     Returns structured report with:
     - Overall statistics
     - Detailed differences
@@ -30,21 +30,21 @@ def generate_report(
     only_in_doc1 = match_results["only_in_doc1"]
     only_in_doc2 = match_results["only_in_doc2"]
     match_score = match_results["match_score"]
-    
+
     # Analyze match quality
     quality = analyze_match_quality(matches)
-    
+
     # Find reorderings
     reorderings = find_potential_reorderings(matches)
-    
+
     # Build difference list
     differences = []
-    
+
     # 1. Non-exact matches
     for match in matches:
         if not match["exact_match"]:
             diff_type = classify_difference(match)
-            
+
             differences.append({
                 "type": "mismatch",
                 "classification": diff_type,
@@ -56,7 +56,7 @@ def generate_report(
                 "similarity": match["similarity"],
                 "suggestions": suggest_corrections(match)
             })
-    
+
     # 2. Sentences only in document 1
     for sent in only_in_doc1:
         differences.append({
@@ -70,7 +70,7 @@ def generate_report(
             "similarity": 0.0,
             "suggestions": ["This sentence appears in document 1 but not in document 2"]
         })
-    
+
     # 3. Sentences only in document 2
     for sent in only_in_doc2:
         differences.append({
@@ -84,13 +84,13 @@ def generate_report(
             "similarity": 0.0,
             "suggestions": ["This sentence appears in document 2 but not in document 1"]
         })
-    
+
     # Sort differences by position
     differences.sort(key=lambda d: (
         d["position1"] if d["position1"] is not None else float('inf'),
         d["position2"] if d["position2"] is not None else float('inf')
     ))
-    
+
     # Generate summary
     summary = {
         "overall_match": round(match_score * 100, 2),  # Percentage
@@ -105,13 +105,13 @@ def generate_report(
         "reorderings_detected": len(reorderings),
         "avg_similarity": round(quality["avg_similarity"], 3)
     }
-    
+
     # Generate verdict
     verdict = generate_verdict(summary)
-    
+
     # Generate recommendations
     recommendations = generate_recommendations(summary, differences, reorderings)
-    
+
     return {
         "summary": summary,
         "verdict": verdict,
@@ -138,7 +138,7 @@ def generate_verdict(summary: Dict) -> Dict:
     Generate overall verdict about document similarity
     """
     match_pct = summary["overall_match"]
-    
+
     if match_pct >= 98:
         status = "identical"
         message = "Documents are virtually identical"
@@ -159,7 +159,7 @@ def generate_verdict(summary: Dict) -> Dict:
         status = "very_different"
         message = "Documents are substantially different"
         color = "red"
-    
+
     return {
         "status": status,
         "message": message,
@@ -177,56 +177,56 @@ def generate_recommendations(
     Generate actionable recommendations based on analysis
     """
     recommendations = []
-    
+
     # Check for OCR issues
     ocr_suggestions = sum(
-        1 for d in differences 
+        1 for d in differences
         if any("OCR" in s for s in d.get("suggestions", []))
     )
     if ocr_suggestions > 3:
         recommendations.append(
             "Multiple potential OCR errors detected. Consider rescanning document with higher quality settings."
         )
-    
+
     # Check for reorderings
     if reorderings:
         recommendations.append(
             f"Detected {len(reorderings)} sentences that appear in different order. "
             "Verify if content was intentionally reorganized."
         )
-    
+
     # Check for missing content
     if summary["missing_in_doc1"] > 0:
         recommendations.append(
             f"{summary['missing_in_doc1']} sentence(s) appear only in document 2. "
             "Check if content was added or if OCR missed these sections."
         )
-    
+
     if summary["missing_in_doc2"] > 0:
         recommendations.append(
             f"{summary['missing_in_doc2']} sentence(s) appear only in document 1. "
             "Check if content was removed or if OCR failed."
         )
-    
+
     # Check overall match
     if summary["overall_match"] < 90:
         recommendations.append(
             "Documents have notable differences. Manual review recommended for important documents."
         )
-    
+
     # If very similar
     if summary["overall_match"] >= 95 and summary["minor_differences"] > 0:
         recommendations.append(
             "Documents are very similar. Differences appear to be minor (typos, punctuation). "
             "Verify if these are acceptable variations."
         )
-    
+
     # If no recommendations yet
     if not recommendations and summary["overall_match"] >= 98:
         recommendations.append(
             "Documents match very closely. No significant issues detected."
         )
-    
+
     return recommendations
 
 
@@ -238,10 +238,10 @@ def generate_html_report(report: Dict, file1_name: str, file2_name: str) -> str:
     summary = report["summary"]
     verdict = report["verdict"]
     differences = report["differences"]
-    
+
     # Color coding
     color = verdict["color"]
-    
+
     html = f"""
     <!DOCTYPE html>
     <html>
@@ -251,19 +251,19 @@ def generate_html_report(report: Dict, file1_name: str, file2_name: str) -> str:
         <style>
             body {{ font-family: Arial, sans-serif; margin: 40px; }}
             .header {{ background: #f0f0f0; padding: 20px; border-radius: 8px; }}
-            .verdict {{ 
-                background: {color}; 
-                color: white; 
-                padding: 15px; 
-                border-radius: 8px; 
+            .verdict {{
+                background: {color};
+                color: white;
+                padding: 15px;
+                border-radius: 8px;
                 margin: 20px 0;
             }}
             .stats {{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }}
             .stat {{ background: #f9f9f9; padding: 15px; border-radius: 8px; }}
-            .difference {{ 
-                border-left: 4px solid #ddd; 
-                padding: 15px; 
-                margin: 15px 0; 
+            .difference {{
+                border-left: 4px solid #ddd;
+                padding: 15px;
+                margin: 15px 0;
                 background: #f9f9f9;
             }}
             .severity-high {{ border-left-color: #ff4444; }}
@@ -277,12 +277,12 @@ def generate_html_report(report: Dict, file1_name: str, file2_name: str) -> str:
             <p><strong>Document 1:</strong> {file1_name}</p>
             <p><strong>Document 2:</strong> {file2_name}</p>
         </div>
-        
+
         <div class="verdict">
             <h2>{verdict['message']}</h2>
             <p>Overall Match: {summary['overall_match']}%</p>
         </div>
-        
+
         <h2>Summary Statistics</h2>
         <div class="stats">
             <div class="stat">
@@ -310,43 +310,43 @@ def generate_html_report(report: Dict, file1_name: str, file2_name: str) -> str:
                 <p>Significant Differences</p>
             </div>
         </div>
-        
+
         <h2>Detailed Differences ({len(differences)})</h2>
     """
-    
+
     for i, diff in enumerate(differences, 1):
         severity_class = f"severity-{diff['severity']}"
         html += f"""
         <div class="difference {severity_class}">
             <h3>Difference #{i} - {diff['classification'].replace('_', ' ').title()}</h3>
             <p><strong>Type:</strong> {diff['type'].replace('_', ' ').title()}</p>
-            <p><strong>Position:</strong> 
-                Doc1: {diff['position1'] or 'N/A'}, 
+            <p><strong>Position:</strong>
+                Doc1: {diff['position1'] or 'N/A'},
                 Doc2: {diff['position2'] or 'N/A'}
             </p>
             <p><strong>Similarity:</strong> {diff['similarity']:.1%}</p>
-            
+
             {f'<p><strong>Document 1:</strong> {diff["sentence1"]}</p>' if diff['sentence1'] else ''}
             {f'<p><strong>Document 2:</strong> {diff["sentence2"]}</p>' if diff['sentence2'] else ''}
-            
+
             {f'<p><strong>Suggestions:</strong></p><ul>{"".join(f"<li>{s}</li>" for s in diff["suggestions"])}</ul>' if diff['suggestions'] else ''}
         </div>
         """
-    
+
     html += """
         <h2>Recommendations</h2>
         <ul>
     """
-    
+
     for rec in report["recommendations"]:
         html += f"<li>{rec}</li>"
-    
+
     html += """
         </ul>
     </body>
     </html>
     """
-    
+
     return html
 
 
@@ -373,26 +373,26 @@ if __name__ == "__main__":
             "normalized_match": False
         }
     ]
-    
+
     mock_results = {
         "matches": mock_matches,
         "only_in_doc1": [],
         "only_in_doc2": [{"id": 2, "text": "Extra sentence in doc 2."}],
         "match_score": 0.85
     }
-    
+
     sentences1 = [m["sent1"] for m in mock_matches]
     sentences2 = [m["sent2"] for m in mock_matches] + mock_results["only_in_doc2"]
-    
+
     report = generate_report(mock_results, sentences1, sentences2)
-    
+
     print("Report Summary:")
     print("="*60)
     for key, value in report["summary"].items():
         print(f"{key}: {value}")
-    
+
     print("\nVerdict:")
     print(report["verdict"]["message"])
-    
+
     print(f"\nDifferences: {len(report['differences'])}")
     print(f"Recommendations: {len(report['recommendations'])}")

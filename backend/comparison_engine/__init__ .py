@@ -3,7 +3,7 @@ Comparison Engine Package
 Smart document comparison with semantic understanding
 """
 
-from .text_extractor import extract_text, extract_with_confidence
+from unified_extractor.extractor import extract_text, extract_text_with_confidence
 from .smart_chunker import chunk_into_sentences, get_statistics
 from .semantic_matcher import match_documents
 from .report_generator import generate_report, generate_html_report

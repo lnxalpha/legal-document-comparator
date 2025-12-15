@@ -11,7 +11,7 @@ from typing import List, Dict, Any
 import asyncio
 from pathlib import Path
 
-from backend.config import Config, ModelConfig
+from config import Config, ModelConfig
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -44,15 +44,11 @@ async def startup_event():
     # Preload models in production for faster first request
     if Config.is_production():
         print("Production mode: Preloading ML models...")
-        try:
-            ModelConfig.preload_models()
-        except Exception as e:
-            print(f"⚠️  Warning: Could not preload models: {e}")
-            print("Models will load on first comparison request")
+        ModelConfig.preload_models()
     else:
         print("Development mode: Models will load on first use")
 
-    # Info
+    # Schedule periodic cleanup
     print(f"Upload directory: {Config.UPLOAD_DIR}")
     print(f"Max file size: {Config.MAX_UPLOAD_SIZE / 1024 / 1024:.1f}MB")
     print(f"Allowed extensions: {', '.join(Config.ALLOWED_EXTENSIONS)}")
@@ -65,7 +61,7 @@ async def startup_event():
 async def shutdown_event():
     """Cleanup on shutdown"""
     print("\n🛑 Shutting down...")
-    Config.cleanup_old_files(max_age_hours=1)
+    Config.cleanup_old_files(max_age_hours=1)  # Clean recent files on shutdown
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -95,7 +91,7 @@ async def health_check():
         "status": "healthy",
         "environment": "production" if Config.is_production() else "development",
         "models_loaded": {
-            "spacy": ModelConfig._spacy_model is not None,
+            "spacy": ModelConfig._spacy_nlp is not None,
             "sentence_transformer": ModelConfig._sentence_model is not None
         }
     }
@@ -115,13 +111,19 @@ async def get_config():
 @app.post("/api/compare")
 async def compare_documents(
     background_tasks: BackgroundTasks,
-    file1: UploadFile = File(...),
-    file2: UploadFile = File(...)
+    file1: UploadFile = File(..., description="First document (digital/OCR)"),
+    file2: UploadFile = File(..., description="Second document (digital/OCR)")
 ):
     """
     Compare two documents using smart semantic matching
-    """
 
+    Returns:
+        - overall_match: Percentage match (0-100)
+        - matched_sentences: Number of matching sentences
+        - total_sentences: Total unique sentences
+        - differences: List of mismatches with context
+        - processing_time: Time taken in seconds
+    """
     import time
     start_time = time.time()
 
@@ -131,44 +133,54 @@ async def compare_documents(
     if not Config.validate_file(file2.filename):
         raise HTTPException(400, f"Invalid file type: {file2.filename}")
 
-    # Save files
+    # Save uploaded files temporarily
     try:
         file1_path = Config.get_temp_filepath(file1.filename)
         file2_path = Config.get_temp_filepath(file2.filename)
 
+        # Save files
         with open(file1_path, "wb") as f:
             content = await file1.read()
             if len(content) > Config.MAX_UPLOAD_SIZE:
-                raise HTTPException(400, "File too large")
+                raise HTTPException(400, f"File too large: {file1.filename}")
             f.write(content)
 
         with open(file2_path, "wb") as f:
             content = await file2.read()
             if len(content) > Config.MAX_UPLOAD_SIZE:
-                raise HTTPException(400, "File too large")
+                raise HTTPException(400, f"File too large: {file2.filename}")
             f.write(content)
 
-        # Lazy imports
-        from backend.comparison_engine.text_extractor import extract_text
-        from backend.comparison_engine.smart_chunker import chunk_into_sentences
-        from backend.comparison_engine.semantic_matcher import match_documents
-        from backend.comparison_engine.report_generator import generate_report
+        # Import comparison engine (lazy import to speed up startup)
+        from unified_extractor.extractor import extract_text, extract_text_with_confidence
+        from comparison_engine.smart_chunker import chunk_into_sentences
+        from comparison_engine.semantic_matcher import match_documents
+        from comparison_engine.report_generator import generate_report
 
-        # Extract text
+        # Step 1: Extract text
+        print(f"📄 Extracting text from {file1.filename}...")
         text1 = await extract_text(file1_path)
+
+        print(f"📄 Extracting text from {file2.filename}...")
         text2 = await extract_text(file2_path)
 
         if not text1 or not text2:
-            raise HTTPException(400, "Could not extract text")
+            raise HTTPException(400, "Could not extract text from one or both documents")
 
-        # Chunk
+        # Step 2: Chunk into sentences
+        print("✂️  Chunking into sentences...")
         sentences1 = chunk_into_sentences(text1)
         sentences2 = chunk_into_sentences(text2)
 
-        # Semantic matching
+        print(f"   Document 1: {len(sentences1)} sentences")
+        print(f"   Document 2: {len(sentences2)} sentences")
+
+        # Step 3: Semantic matching
+        print("🧠 Performing semantic matching...")
         matches = match_documents(sentences1, sentences2)
 
-        # Report
+        # Step 4: Generate report
+        print("📊 Generating report...")
         report = generate_report(matches, sentences1, sentences2)
 
         processing_time = time.time() - start_time
@@ -177,30 +189,22 @@ async def compare_documents(
         report["file2_name"] = file2.filename
 
         print(f"✓ Comparison complete in {processing_time:.2f}s")
+        report["overall_match"] = report["summary"]["overall_match"]
         print(f"  Match: {report['overall_match']:.1f}%")
-        
-        # Cleanup
+
+        # Schedule cleanup of uploaded files
         background_tasks.add_task(cleanup_files, [file1_path, file2_path])
 
         return JSONResponse(content=report)
 
     except Exception as e:
         # Clean up files on error
-        try:
-            for path in [file1_path, file2_path]:
-                if path and path.exists():
-                    path.unlink()
-        except:
-            pass
-        
+        for path in [file1_path, file2_path]:
+            if path.exists():
+                path.unlink()
+
         print(f"❌ Error: {str(e)}")
-        import traceback
-        traceback.print_exc()
-        
-        raise HTTPException(
-            status_code=500, 
-            detail=f"Comparison failed: {str(e)}"
-        )
+        raise HTTPException(500, f"Comparison failed: {str(e)}")
 
 
 @app.post("/api/extract-text")
@@ -208,25 +212,27 @@ async def extract_text_endpoint(
     background_tasks: BackgroundTasks,
     file: UploadFile = File(..., description="Document to extract text from")
 ):
-    """Extract text from a document"""
-
+    """
+    Extract text from a document (useful for testing OCR)
+    """
     if not Config.validate_file(file.filename):
         raise HTTPException(400, f"Invalid file type: {file.filename}")
 
     try:
         file_path = Config.get_temp_filepath(file.filename)
 
+        # Save file
         with open(file_path, "wb") as f:
             content = await file.read()
             if len(content) > Config.MAX_UPLOAD_SIZE:
                 raise HTTPException(400, "File too large")
             f.write(content)
 
-        # Correct import (FIXED)
-        from backend.comparison_engine.text_extractor import extract_text
-
+        # Extract text
+        from unified_extractor.extractor import extract_text
         text = await extract_text(file_path)
 
+        # Cleanup
         background_tasks.add_task(cleanup_files, [file_path])
 
         return {
@@ -241,7 +247,6 @@ async def extract_text_endpoint(
             file_path.unlink()
         raise HTTPException(500, f"Text extraction failed: {str(e)}")
 
-
 def cleanup_files(file_paths: List[Path]):
     """Background task to clean up temporary files"""
     for path in file_paths:
@@ -251,11 +256,11 @@ def cleanup_files(file_paths: List[Path]):
         except Exception as e:
             print(f"Warning: Could not delete {path}: {e}")
 
-
 if __name__ == "__main__":
     import uvicorn
+
     uvicorn.run(
-        "backend.app:app",
+        "app:app",
         host=Config.HOST,
         port=Config.PORT,
         reload=Config.DEBUG,

@@ -12,7 +12,7 @@ __version__ = "1.0.0"
 
 __all__ = [
     "extract_text",
-    "extract_with_confidence",
+    "extract_text_with_confidence",
     "chunk_into_sentences",
     "get_statistics",
     "match_documents",

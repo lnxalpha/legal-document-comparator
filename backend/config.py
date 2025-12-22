@@ -1,19 +1,24 @@
 """
 Configuration Management for Legal Document Comparator
 Handles environment detection and settings
+Phase 1: Added quality metrics and enhanced thresholds
 """
 
 import os
 from pathlib import Path
 from typing import Optional
+from dataclasses import dataclass
+import logging
 
 class Config:
     """Application configuration"""
 
     # Base paths
-    BASE_DIR = Path(__file__).parent
+    BASE_DIR = Path(__file__).resolve().parent
     UPLOAD_DIR = BASE_DIR / "uploads"
     STATIC_DIR = BASE_DIR / "static"
+    REPORT_DIR = BASE_DIR / "reports"
+    EXPORT_DIR = BASE_DIR / "exports"
 
     # Server settings
     HOST: str = os.getenv("HOST", "127.0.0.1")
@@ -41,6 +46,31 @@ class Config:
     # Performance settings
     MAX_PAGES_FREE_TIER: int = 10
     MAX_SENTENCE_LENGTH: int = 500  # Characters
+
+    # Semantic matching thresholds
+    SIMILARITY_THRESHOLD: float = 0.85
+    MERGE_SIMILARITY_THRESHOLD: float = 0.92
+    RELOCATED_SIMILARITY_THRESHOLD: float = 0.95
+    CONTEXT_SUPPORT_THRESHOLD: float = 0.70
+    WIDER_CONTEXT_THRESHOLD: float = 0.65
+
+    HIGH_SIMILARITY_THRESHOLD: float = 0.95     # For detailed diff analysis
+    REWORDING_THRESHOLD: float = 0.85           # Rewording vs significant change
+
+     # ====== SUBSTRING DETECTION ======
+    MIN_SUBSTRING_LENGTH: int = 20              # Minimum chars for substring match
+    MIN_NORMALIZED_LENGTH: int = 15             # Minimum for normalized substring
+    MERGE_LENGTH_RATIO: float = 1.3             # Target must be 1.3x longer
+
+    # OCR thresholds
+    OCR_CONFIDENCE_THRESHOLD: float = 0.70
+    OCR_SIMILARITY_THRESHOLD: float = 0.90
+
+    # ========== PHASE 1 ADDITIONS ==========
+    # Quality thresholds for provenance tracking
+    MIN_SENTENCE_CONFIDENCE: float = 0.5  # Flag sentences below this
+    WARN_OVERALL_CONFIDENCE: float = 0.7  # Warn if doc confidence below this
+    # =======================================
 
     @classmethod
     def ensure_directories(cls):
@@ -138,6 +168,65 @@ class ModelConfig:
         cls.get_sentence_transformer()
         print("✓ All models loaded")
 
+
+# ========== PHASE 1 ADDITIONS: LOGGING & QUALITY METRICS ==========
+
+def setup_logging(level=logging.INFO):
+    """Configure logging for the application."""
+    logging.basicConfig(
+        level=level,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S'
+    )
+
+    # Reduce noise from libraries
+    logging.getLogger('PIL').setLevel(logging.WARNING)
+    logging.getLogger('easyocr').setLevel(logging.WARNING)
+    logging.getLogger('transformers').setLevel(logging.WARNING)
+
+
+@dataclass
+class QualityMetrics:
+    """Track quality metrics for provenance."""
+    total_sentences: int = 0
+    low_confidence_sentences: int = 0
+    ocr_sentences: int = 0
+    direct_sentences: int = 0
+    failed_sentences: int = 0
+    avg_confidence: float = 0.0
+
+    def quality_score(self) -> float:
+        """Calculate overall quality score (0-1)."""
+        if self.total_sentences == 0:
+            return 0.0
+
+        # Penalize low confidence and failures
+        penalty = (self.low_confidence_sentences + self.failed_sentences * 2) / self.total_sentences
+
+        return max(0.0, self.avg_confidence - penalty * 0.2)
+
+    def quality_label(self) -> str:
+        """Get human-readable quality label."""
+        score = self.quality_score()
+
+        if score >= 0.9:
+            return "excellent"
+        elif score >= 0.75:
+            return "good"
+        elif score >= 0.6:
+            return "fair"
+        elif score >= 0.4:
+            return "poor"
+        else:
+            return "very_poor"
+
+
+# ========== PATHS FOR TESTS ==========
+DICTIONARIES_DIR = Config.BASE_DIR / "unified_extractor" / "dictionaries"
+TESTS_DIR = Config.BASE_DIR / "tests"
+GOLDEN_SAMPLES_DIR = TESTS_DIR / "golden_samples"
+
+# =====================================================
 
 # Initialize directories on import
 Config.ensure_directories()

@@ -1,0 +1,33 @@
+{
+  "report_id": "report_7f4254e4ecc3431d",
+  "summary": {
+    "overall_match": 100.0,
+    "total_sentences_doc1": 278,
+    "total_sentences_doc2": 278,
+    "matched_sentences": 278,
+    "exact_matches": 278,
+    "minor_differences": 0,
+    "significant_differences": 0,
+    "formatting_only": 0,
+    "ocr_errors": 0,
+    "avg_similarity": 1.0,
+    "exact_match": true,
+    "identity_check": true
+  },
+  "verdict": {
+    "status": "identical",
+    "message": "Documents are textually identical after normalization",
+    "color": "green"
+  },
+  "differences": [],
+  "recommendations": [
+    "✅ Documents are textually identical after normalization.",
+    "No differences detected - documents can be considered equivalent.",
+    "Processing completed in 9.54s using fast identity check."
+  ],
+  "file1_name": "Gani's 40th.pdf",
+  "file2_name": "Gani's 40th.pdf",
+  "processing_time": 9.54,
+  "sentences1": [],
+  "sentences2": []
+}

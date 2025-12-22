@@ -1,0 +1,954 @@
+{
+  "id": "report_2cc8f91d788f401e",
+  "timestamp": "2025-12-22T08:27:13.172789",
+  "file1_name": "WhatsApp Image 2025-12-15 at 6.19.14 PM.jpeg",
+  "file2_name": "WhatsApp Image 2025-12-15 at 6.19.14 PM.jpeg",
+  "summary": {
+    "overall_match": 86.36,
+    "total_sentences_doc1": 22,
+    "total_sentences_doc2": 22,
+    "matched_sentences": 19,
+    "exact_matches": 19,
+    "minor_differences": 0,
+    "significant_differences": 0,
+    "missing_in_doc1": 0,
+    "missing_in_doc2": 0,
+    "merged_in_doc1": 3,
+    "merged_in_doc2": 3,
+    "reorderings_detected": 0,
+    "avg_similarity": 1.0,
+    "formatting_only": 0,
+    "ocr_errors": 0,
+    "number_formatting": 0
+  },
+  "differences": [
+    {
+      "type": "merged_in_doc2",
+      "classification": "sentence_merge",
+      "severity": "medium",
+      "position1": 2,
+      "position2": 2,
+      "sentence1": "[ RomANS 12:21 | OVERCOMING EVIL WITH GOOD - octor.",
+      "sentence2": "[ RomANS 12:21 | OVERCOMING EVIL WITH GOOD - octor.",
+      "similarity": 1.0,
+      "suggestions": [
+        "This sentence from Doc1 appears merged into Doc2 position 2",
+        "Merge type: direct_substring"
+      ],
+      "merge_type": "direct_substring",
+      "diff_html1": null,
+      "diff_html2": null,
+      "explanation": null
+    },
+    {
+      "type": "merged_in_doc1",
+      "classification": "sentence_merge",
+      "severity": "medium",
+      "position1": 2,
+      "position2": 2,
+      "sentence1": "[ RomANS 12:21 | OVERCOMING EVIL WITH GOOD - octor.",
+      "sentence2": "[ RomANS 12:21 | OVERCOMING EVIL WITH GOOD - octor.",
+      "similarity": 1.0,
+      "suggestions": [
+        "This sentence from Doc2 appears merged into Doc1 position 2",
+        "Merge type: direct_substring"
+      ],
+      "merge_type": "direct_substring",
+      "diff_html1": null,
+      "diff_html2": null
+    },
+    {
+      "type": "merged_in_doc2",
+      "classification": "sentence_merge",
+      "severity": "medium",
+      "position1": 13,
+      "position2": 13,
+      "sentence1": "And these fears are well-founded if we're left to ourselves.",
+      "sentence2": "And these fears are well-founded if we're left to ourselves.",
+      "similarity": 1.0,
+      "suggestions": [
+        "This sentence from Doc1 appears merged into Doc2 position 13",
+        "Merge type: direct_substring"
+      ],
+      "merge_type": "direct_substring",
+      "diff_html1": null,
+      "diff_html2": null,
+      "explanation": null
+    },
+    {
+      "type": "merged_in_doc1",
+      "classification": "sentence_merge",
+      "severity": "medium",
+      "position1": 13,
+      "position2": 13,
+      "sentence1": "And these fears are well-founded if we're left to ourselves.",
+      "sentence2": "And these fears are well-founded if we're left to ourselves.",
+      "similarity": 1.0,
+      "suggestions": [
+        "This sentence from Doc2 appears merged into Doc1 position 13",
+        "Merge type: direct_substring"
+      ],
+      "merge_type": "direct_substring",
+      "diff_html1": null,
+      "diff_html2": null
+    },
+    {
+      "type": "merged_in_doc2",
+      "classification": "sentence_merge",
+      "severity": "medium",
+      "position1": 20,
+      "position2": 20,
+      "sentence1": "Some of us care for the poor.",
+      "sentence2": "Some of us care for the poor.",
+      "similarity": 1.0,
+      "suggestions": [
+        "This sentence from Doc1 appears merged into Doc2 position 20",
+        "Merge type: direct_substring"
+      ],
+      "merge_type": "direct_substring",
+      "diff_html1": null,
+      "diff_html2": null,
+      "explanation": null
+    },
+    {
+      "type": "merged_in_doc1",
+      "classification": "sentence_merge",
+      "severity": "medium",
+      "position1": 20,
+      "position2": 20,
+      "sentence1": "Some of us care for the poor.",
+      "sentence2": "Some of us care for the poor.",
+      "similarity": 1.0,
+      "suggestions": [
+        "This sentence from Doc2 appears merged into Doc1 position 20",
+        "Merge type: direct_substring"
+      ],
+      "merge_type": "direct_substring",
+      "diff_html1": null,
+      "diff_html2": null
+    }
+  ],
+  "recommendations": [
+    "Detected 6 sentence(s) that were merged during OCR. This is common with scanned documents. Review merged sections for accuracy.",
+    "Main differences are due to sentence boundary detection. Content appears identical but segmented differently."
+  ],
+  "sentences1": [
+    {
+      "id": 0,
+      "text": "@ROMANS 12:14-21 TUESDAY | SEPTEMBER 16 po not be overcome by evil, put overcome evil with good.",
+      "start_char": 0,
+      "end_char": 96,
+      "length": 96,
+      "confidence": 0.8738938053097336,
+      "source": "ocr",
+      "line_id": 0,
+      "collapsed_count": 1
+    },
+    {
+      "id": 1,
+      "text": "[ RomANS 12:21 | OVERCOMING EVIL WITH GOOD - octor.",
+      "start_char": 97,
+      "end_char": 148,
+      "length": 51,
+      "confidence": 0.8113913470993113,
+      "source": "ocr",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 2,
+      "text": "Dolittle, the fictional doctor who converses with ani- mals, has delighted fans through books, movies, and plays.",
+      "start_char": 149,
+      "end_char": 262,
+      "length": 113,
+      "confidence": 0.8738938053097336,
+      "source": "ocr",
+      "line_id": 0,
+      "collapsed_count": 1
+    },
+    {
+      "id": 3,
+      "text": "However, few people know that author.",
+      "start_char": 263,
+      "end_char": 300,
+      "length": 37,
+      "confidence": 0.8113913470993113,
+      "source": "ocr",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 4,
+      "text": "Hugh.",
+      "start_char": 301,
+      "end_char": 306,
+      "length": 5,
+      "confidence": 0.8113913470993113,
+      "source": "ocr",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 5,
+      "text": "Lofting first wrote the Dolittle tales to his children from the ghastly trenches of World.",
+      "start_char": 307,
+      "end_char": 397,
+      "length": 90,
+      "confidence": 0.8113913470993113,
+      "source": "ocr",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 6,
+      "text": "War I. He later said that the war was too awful to recount in his letters—so he wrote and illustrated stories instead.",
+      "start_char": 398,
+      "end_char": 516,
+      "length": 118,
+      "confidence": 0.8738938053097336,
+      "source": "ocr",
+      "line_id": 0,
+      "collapsed_count": 1
+    },
+    {
+      "id": 7,
+      "text": "These whimsical, joy-filled tales were.",
+      "start_char": 517,
+      "end_char": 556,
+      "length": 39,
+      "confidence": 0.8113913470993113,
+      "source": "ocr",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 8,
+      "text": "Lofting’s way of pushing back against the war’s horror.",
+      "start_char": 557,
+      "end_char": 612,
+      "length": 55,
+      "confidence": 0.8738938053097336,
+      "source": "ocr",
+      "line_id": 0,
+      "collapsed_count": 1
+    },
+    {
+      "id": 9,
+      "text": "It’s inspiring to see a person movlng against the menacing, degrading forces that seem too powerful to thwart.",
+      "start_char": 613,
+      "end_char": 723,
+      "length": 110,
+      "confidence": 0.8113913470993113,
+      "source": "ocr",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 10,
+      "text": "We admire this resilient courage because we fear that injustice, violence, and greed will triumph.",
+      "start_char": 724,
+      "end_char": 822,
+      "length": 98,
+      "confidence": 0.8738938053097336,
+      "source": "ocr",
+      "line_id": 0,
+      "collapsed_count": 1
+    },
+    {
+      "id": 11,
+      "text": "Sometimes we fear that the whole world will be “overcome by evil” (ROMANS 12:21).",
+      "start_char": 823,
+      "end_char": 904,
+      "length": 81,
+      "confidence": 0.8738938053097336,
+      "source": "ocr",
+      "line_id": 0,
+      "collapsed_count": 1
+    },
+    {
+      "id": 12,
+      "text": "And these fears are well-founded if we're left to ourselves.",
+      "start_char": 905,
+      "end_char": 965,
+      "length": 60,
+      "confidence": 0.8738938053097336,
+      "source": "ocr",
+      "line_id": 0,
+      "collapsed_count": 1
+    },
+    {
+      "id": 13,
+      "text": "However, God has not left us to ourselves.",
+      "start_char": 966,
+      "end_char": 1008,
+      "length": 42,
+      "confidence": 0.8738938053097336,
+      "source": "ocr",
+      "line_id": 0,
+      "collapsed_count": 1
+    },
+    {
+      "id": 14,
+      "text": "He fills us with.",
+      "start_char": 1009,
+      "end_char": 1026,
+      "length": 17,
+      "confidence": 0.8113913470993113,
+      "source": "ocr",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 15,
+      "text": "His divine strength, places us in the action, and calls us to “overcome evil with good” (v. 21).",
+      "start_char": 1027,
+      "end_char": 1123,
+      "length": 96,
+      "confidence": 0.8738938053097336,
+      "source": "ocr",
+      "line_id": 0,
+      "collapsed_count": 1
+    },
+    {
+      "id": 16,
+      "text": "We each overcome evil with good in WHATEVER ways.",
+      "start_char": 1124,
+      "end_char": 1173,
+      "length": 49,
+      "confidence": 0.8113913470993113,
+      "source": "ocr",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 17,
+      "text": "God has put into our hearts.",
+      "start_char": 1174,
+      "end_char": 1202,
+      "length": 28,
+      "confidence": 0.8738938053097336,
+      "source": "ocr",
+      "line_id": 0,
+      "collapsed_count": 1
+    },
+    {
+      "id": 18,
+      "text": "Some of us write beautiful stories.",
+      "start_char": 1203,
+      "end_char": 1238,
+      "length": 35,
+      "confidence": 0.8738938053097336,
+      "source": "ocr",
+      "line_id": 0,
+      "collapsed_count": 1
+    },
+    {
+      "id": 19,
+      "text": "Some of us care for the poor.",
+      "start_char": 1239,
+      "end_char": 1268,
+      "length": 29,
+      "confidence": 0.8738938053097336,
+      "source": "ocr",
+      "line_id": 0,
+      "collapsed_count": 1
+    },
+    {
+      "id": 20,
+      "text": "Some of us make our homes places of welcome.",
+      "start_char": 1269,
+      "end_char": 1313,
+      "length": 44,
+      "confidence": 0.8738938053097336,
+      "source": "ocr",
+      "line_id": 0,
+      "collapsed_count": 1
+    },
+    {
+      "id": 21,
+      "text": "Sorﬁe ﬁf usrs'trlén:erGod‘s story through melody, poetry, or conversa-",
+      "start_char": 1314,
+      "end_char": 1384,
+      "length": 70,
+      "confidence": 0.7488888888888889,
+      "source": "ocr",
+      "line_id": 1,
+      "collapsed_count": 1
+    }
+  ],
+  "sentences2": [
+    {
+      "id": 0,
+      "text": "@ROMANS 12:14-21 TUESDAY | SEPTEMBER 16 po not be overcome by evil, put overcome evil with good.",
+      "start_char": 0,
+      "end_char": 96,
+      "length": 96,
+      "confidence": 0.8738938053097336,
+      "source": "ocr",
+      "line_id": 0,
+      "collapsed_count": 1
+    },
+    {
+      "id": 1,
+      "text": "[ RomANS 12:21 | OVERCOMING EVIL WITH GOOD - octor.",
+      "start_char": 97,
+      "end_char": 148,
+      "length": 51,
+      "confidence": 0.8113913470993113,
+      "source": "ocr",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 2,
+      "text": "Dolittle, the fictional doctor who converses with ani- mals, has delighted fans through books, movies, and plays.",
+      "start_char": 149,
+      "end_char": 262,
+      "length": 113,
+      "confidence": 0.8738938053097336,
+      "source": "ocr",
+      "line_id": 0,
+      "collapsed_count": 1
+    },
+    {
+      "id": 3,
+      "text": "However, few people know that author.",
+      "start_char": 263,
+      "end_char": 300,
+      "length": 37,
+      "confidence": 0.8113913470993113,
+      "source": "ocr",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 4,
+      "text": "Hugh.",
+      "start_char": 301,
+      "end_char": 306,
+      "length": 5,
+      "confidence": 0.8113913470993113,
+      "source": "ocr",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 5,
+      "text": "Lofting first wrote the Dolittle tales to his children from the ghastly trenches of World.",
+      "start_char": 307,
+      "end_char": 397,
+      "length": 90,
+      "confidence": 0.8113913470993113,
+      "source": "ocr",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 6,
+      "text": "War I. He later said that the war was too awful to recount in his letters—so he wrote and illustrated stories instead.",
+      "start_char": 398,
+      "end_char": 516,
+      "length": 118,
+      "confidence": 0.8738938053097336,
+      "source": "ocr",
+      "line_id": 0,
+      "collapsed_count": 1
+    },
+    {
+      "id": 7,
+      "text": "These whimsical, joy-filled tales were.",
+      "start_char": 517,
+      "end_char": 556,
+      "length": 39,
+      "confidence": 0.8113913470993113,
+      "source": "ocr",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 8,
+      "text": "Lofting’s way of pushing back against the war’s horror.",
+      "start_char": 557,
+      "end_char": 612,
+      "length": 55,
+      "confidence": 0.8738938053097336,
+      "source": "ocr",
+      "line_id": 0,
+      "collapsed_count": 1
+    },
+    {
+      "id": 9,
+      "text": "It’s inspiring to see a person movlng against the menacing, degrading forces that seem too powerful to thwart.",
+      "start_char": 613,
+      "end_char": 723,
+      "length": 110,
+      "confidence": 0.8113913470993113,
+      "source": "ocr",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 10,
+      "text": "We admire this resilient courage because we fear that injustice, violence, and greed will triumph.",
+      "start_char": 724,
+      "end_char": 822,
+      "length": 98,
+      "confidence": 0.8738938053097336,
+      "source": "ocr",
+      "line_id": 0,
+      "collapsed_count": 1
+    },
+    {
+      "id": 11,
+      "text": "Sometimes we fear that the whole world will be “overcome by evil” (ROMANS 12:21).",
+      "start_char": 823,
+      "end_char": 904,
+      "length": 81,
+      "confidence": 0.8738938053097336,
+      "source": "ocr",
+      "line_id": 0,
+      "collapsed_count": 1
+    },
+    {
+      "id": 12,
+      "text": "And these fears are well-founded if we're left to ourselves.",
+      "start_char": 905,
+      "end_char": 965,
+      "length": 60,
+      "confidence": 0.8738938053097336,
+      "source": "ocr",
+      "line_id": 0,
+      "collapsed_count": 1
+    },
+    {
+      "id": 13,
+      "text": "However, God has not left us to ourselves.",
+      "start_char": 966,
+      "end_char": 1008,
+      "length": 42,
+      "confidence": 0.8738938053097336,
+      "source": "ocr",
+      "line_id": 0,
+      "collapsed_count": 1
+    },
+    {
+      "id": 14,
+      "text": "He fills us with.",
+      "start_char": 1009,
+      "end_char": 1026,
+      "length": 17,
+      "confidence": 0.8113913470993113,
+      "source": "ocr",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 15,
+      "text": "His divine strength, places us in the action, and calls us to “overcome evil with good” (v. 21).",
+      "start_char": 1027,
+      "end_char": 1123,
+      "length": 96,
+      "confidence": 0.8738938053097336,
+      "source": "ocr",
+      "line_id": 0,
+      "collapsed_count": 1
+    },
+    {
+      "id": 16,
+      "text": "We each overcome evil with good in WHATEVER ways.",
+      "start_char": 1124,
+      "end_char": 1173,
+      "length": 49,
+      "confidence": 0.8113913470993113,
+      "source": "ocr",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 17,
+      "text": "God has put into our hearts.",
+      "start_char": 1174,
+      "end_char": 1202,
+      "length": 28,
+      "confidence": 0.8738938053097336,
+      "source": "ocr",
+      "line_id": 0,
+      "collapsed_count": 1
+    },
+    {
+      "id": 18,
+      "text": "Some of us write beautiful stories.",
+      "start_char": 1203,
+      "end_char": 1238,
+      "length": 35,
+      "confidence": 0.8738938053097336,
+      "source": "ocr",
+      "line_id": 0,
+      "collapsed_count": 1
+    },
+    {
+      "id": 19,
+      "text": "Some of us care for the poor.",
+      "start_char": 1239,
+      "end_char": 1268,
+      "length": 29,
+      "confidence": 0.8738938053097336,
+      "source": "ocr",
+      "line_id": 0,
+      "collapsed_count": 1
+    },
+    {
+      "id": 20,
+      "text": "Some of us make our homes places of welcome.",
+      "start_char": 1269,
+      "end_char": 1313,
+      "length": 44,
+      "confidence": 0.8738938053097336,
+      "source": "ocr",
+      "line_id": 0,
+      "collapsed_count": 1
+    },
+    {
+      "id": 21,
+      "text": "Sorﬁe ﬁf usrs'trlén:erGod‘s story through melody, poetry, or conversa-",
+      "start_char": 1314,
+      "end_char": 1384,
+      "length": 70,
+      "confidence": 0.7488888888888889,
+      "source": "ocr",
+      "line_id": 1,
+      "collapsed_count": 1
+    }
+  ],
+  "full_report": {
+    "summary": {
+      "overall_match": 86.36,
+      "total_sentences_doc1": 22,
+      "total_sentences_doc2": 22,
+      "matched_sentences": 19,
+      "exact_matches": 19,
+      "minor_differences": 0,
+      "significant_differences": 0,
+      "missing_in_doc1": 0,
+      "missing_in_doc2": 0,
+      "merged_in_doc1": 3,
+      "merged_in_doc2": 3,
+      "reorderings_detected": 0,
+      "avg_similarity": 1.0,
+      "formatting_only": 0,
+      "ocr_errors": 0,
+      "number_formatting": 0
+    },
+    "verdict": {
+      "status": "similar",
+      "message": "Documents are similar but have notable differences",
+      "color": "yellow",
+      "confidence": "high"
+    },
+    "differences": [
+      {
+        "type": "merged_in_doc2",
+        "classification": "sentence_merge",
+        "severity": "medium",
+        "position1": 2,
+        "position2": 2,
+        "sentence1": "[ RomANS 12:21 | OVERCOMING EVIL WITH GOOD - octor.",
+        "sentence2": "[ RomANS 12:21 | OVERCOMING EVIL WITH GOOD - octor.",
+        "similarity": 1.0,
+        "suggestions": [
+          "This sentence from Doc1 appears merged into Doc2 position 2",
+          "Merge type: direct_substring"
+        ],
+        "merge_type": "direct_substring",
+        "diff_html1": null,
+        "diff_html2": null,
+        "explanation": null
+      },
+      {
+        "type": "merged_in_doc1",
+        "classification": "sentence_merge",
+        "severity": "medium",
+        "position1": 2,
+        "position2": 2,
+        "sentence1": "[ RomANS 12:21 | OVERCOMING EVIL WITH GOOD - octor.",
+        "sentence2": "[ RomANS 12:21 | OVERCOMING EVIL WITH GOOD - octor.",
+        "similarity": 1.0,
+        "suggestions": [
+          "This sentence from Doc2 appears merged into Doc1 position 2",
+          "Merge type: direct_substring"
+        ],
+        "merge_type": "direct_substring",
+        "diff_html1": null,
+        "diff_html2": null
+      },
+      {
+        "type": "merged_in_doc2",
+        "classification": "sentence_merge",
+        "severity": "medium",
+        "position1": 13,
+        "position2": 13,
+        "sentence1": "And these fears are well-founded if we're left to ourselves.",
+        "sentence2": "And these fears are well-founded if we're left to ourselves.",
+        "similarity": 1.0,
+        "suggestions": [
+          "This sentence from Doc1 appears merged into Doc2 position 13",
+          "Merge type: direct_substring"
+        ],
+        "merge_type": "direct_substring",
+        "diff_html1": null,
+        "diff_html2": null,
+        "explanation": null
+      },
+      {
+        "type": "merged_in_doc1",
+        "classification": "sentence_merge",
+        "severity": "medium",
+        "position1": 13,
+        "position2": 13,
+        "sentence1": "And these fears are well-founded if we're left to ourselves.",
+        "sentence2": "And these fears are well-founded if we're left to ourselves.",
+        "similarity": 1.0,
+        "suggestions": [
+          "This sentence from Doc2 appears merged into Doc1 position 13",
+          "Merge type: direct_substring"
+        ],
+        "merge_type": "direct_substring",
+        "diff_html1": null,
+        "diff_html2": null
+      },
+      {
+        "type": "merged_in_doc2",
+        "classification": "sentence_merge",
+        "severity": "medium",
+        "position1": 20,
+        "position2": 20,
+        "sentence1": "Some of us care for the poor.",
+        "sentence2": "Some of us care for the poor.",
+        "similarity": 1.0,
+        "suggestions": [
+          "This sentence from Doc1 appears merged into Doc2 position 20",
+          "Merge type: direct_substring"
+        ],
+        "merge_type": "direct_substring",
+        "diff_html1": null,
+        "diff_html2": null,
+        "explanation": null
+      },
+      {
+        "type": "merged_in_doc1",
+        "classification": "sentence_merge",
+        "severity": "medium",
+        "position1": 20,
+        "position2": 20,
+        "sentence1": "Some of us care for the poor.",
+        "sentence2": "Some of us care for the poor.",
+        "similarity": 1.0,
+        "suggestions": [
+          "This sentence from Doc2 appears merged into Doc1 position 20",
+          "Merge type: direct_substring"
+        ],
+        "merge_type": "direct_substring",
+        "diff_html1": null,
+        "diff_html2": null
+      }
+    ],
+    "grouped_differences": [],
+    "reorderings": [],
+    "merged_sentences": {
+      "merged_in_doc1": [
+        {
+          "source_sentence": {
+            "id": 1,
+            "text": "[ RomANS 12:21 | OVERCOMING EVIL WITH GOOD - octor.",
+            "start_char": 97,
+            "end_char": 148,
+            "length": 51,
+            "is_split": false,
+            "source": "ocr",
+            "confidence": 0.8113913470993113,
+            "line_id": null,
+            "ocr_method": null
+          },
+          "merged_into": {
+            "id": 1,
+            "text": "[ RomANS 12:21 | OVERCOMING EVIL WITH GOOD - octor.",
+            "start_char": 97,
+            "end_char": 148,
+            "length": 51,
+            "is_split": false,
+            "source": "ocr",
+            "confidence": 0.8113913470993113,
+            "line_id": null,
+            "ocr_method": null
+          },
+          "merged_into_index": 1,
+          "merge_type": "direct_substring",
+          "similarity": 1.0
+        },
+        {
+          "source_sentence": {
+            "id": 12,
+            "text": "And these fears are well-founded if we're left to ourselves.",
+            "start_char": 905,
+            "end_char": 965,
+            "length": 60,
+            "is_split": false,
+            "source": "ocr",
+            "confidence": 0.8738938053097336,
+            "line_id": 0,
+            "ocr_method": "tesseract"
+          },
+          "merged_into": {
+            "id": 12,
+            "text": "And these fears are well-founded if we're left to ourselves.",
+            "start_char": 905,
+            "end_char": 965,
+            "length": 60,
+            "is_split": false,
+            "source": "ocr",
+            "confidence": 0.8738938053097336,
+            "line_id": 0,
+            "ocr_method": "tesseract"
+          },
+          "merged_into_index": 12,
+          "merge_type": "direct_substring",
+          "similarity": 1.0
+        },
+        {
+          "source_sentence": {
+            "id": 19,
+            "text": "Some of us care for the poor.",
+            "start_char": 1239,
+            "end_char": 1268,
+            "length": 29,
+            "is_split": false,
+            "source": "ocr",
+            "confidence": 0.8738938053097336,
+            "line_id": 0,
+            "ocr_method": "tesseract"
+          },
+          "merged_into": {
+            "id": 19,
+            "text": "Some of us care for the poor.",
+            "start_char": 1239,
+            "end_char": 1268,
+            "length": 29,
+            "is_split": false,
+            "source": "ocr",
+            "confidence": 0.8738938053097336,
+            "line_id": 0,
+            "ocr_method": "tesseract"
+          },
+          "merged_into_index": 19,
+          "merge_type": "direct_substring",
+          "similarity": 1.0
+        }
+      ],
+      "merged_in_doc2": [
+        {
+          "source_sentence": {
+            "id": 1,
+            "text": "[ RomANS 12:21 | OVERCOMING EVIL WITH GOOD - octor.",
+            "start_char": 97,
+            "end_char": 148,
+            "length": 51,
+            "is_split": false,
+            "source": "ocr",
+            "confidence": 0.8113913470993113,
+            "line_id": null,
+            "ocr_method": null
+          },
+          "merged_into": {
+            "id": 1,
+            "text": "[ RomANS 12:21 | OVERCOMING EVIL WITH GOOD - octor.",
+            "start_char": 97,
+            "end_char": 148,
+            "length": 51,
+            "is_split": false,
+            "source": "ocr",
+            "confidence": 0.8113913470993113,
+            "line_id": null,
+            "ocr_method": null
+          },
+          "merged_into_index": 1,
+          "merge_type": "direct_substring",
+          "similarity": 1.0
+        },
+        {
+          "source_sentence": {
+            "id": 12,
+            "text": "And these fears are well-founded if we're left to ourselves.",
+            "start_char": 905,
+            "end_char": 965,
+            "length": 60,
+            "is_split": false,
+            "source": "ocr",
+            "confidence": 0.8738938053097336,
+            "line_id": 0,
+            "ocr_method": "tesseract"
+          },
+          "merged_into": {
+            "id": 12,
+            "text": "And these fears are well-founded if we're left to ourselves.",
+            "start_char": 905,
+            "end_char": 965,
+            "length": 60,
+            "is_split": false,
+            "source": "ocr",
+            "confidence": 0.8738938053097336,
+            "line_id": 0,
+            "ocr_method": "tesseract"
+          },
+          "merged_into_index": 12,
+          "merge_type": "direct_substring",
+          "similarity": 1.0
+        },
+        {
+          "source_sentence": {
+            "id": 19,
+            "text": "Some of us care for the poor.",
+            "start_char": 1239,
+            "end_char": 1268,
+            "length": 29,
+            "is_split": false,
+            "source": "ocr",
+            "confidence": 0.8738938053097336,
+            "line_id": 0,
+            "ocr_method": "tesseract"
+          },
+          "merged_into": {
+            "id": 19,
+            "text": "Some of us care for the poor.",
+            "start_char": 1239,
+            "end_char": 1268,
+            "length": 29,
+            "is_split": false,
+            "source": "ocr",
+            "confidence": 0.8738938053097336,
+            "line_id": 0,
+            "ocr_method": "tesseract"
+          },
+          "merged_into_index": 19,
+          "merge_type": "direct_substring",
+          "similarity": 1.0
+        }
+      ]
+    },
+    "recommendations": [
+      "Detected 6 sentence(s) that were merged during OCR. This is common with scanned documents. Review merged sections for accuracy.",
+      "Main differences are due to sentence boundary detection. Content appears identical but segmented differently."
+    ],
+    "quality_analysis": {
+      "total_matches": 19,
+      "exact_matches": 19,
+      "formatting_only": 0,
+      "number_formatting": 0,
+      "citation_format": 0,
+      "ocr_errors": 0,
+      "minor_differences": 0,
+      "rewordings": 0,
+      "significant_differences": 0,
+      "avg_similarity": 1.000000094112597
+    }
+  }
+}

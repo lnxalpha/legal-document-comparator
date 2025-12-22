@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Comparison - Legal Document Comparator</title>
+    <link rel="stylesheet" href="/static/comparison_view.css">
+    <style>
+        /* Additional styles for comments feature */
+        .comment-indicator {
+            color: #3498db;
+            font-size: 0.9rem;
+            margin-left: 4px;
+        }
+
+        .comment-btn {
+            padding: 8px 16px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .comment-btn:hover {
+            background: #2980b9;
+        }
+
+        .notes-section {
+            background: #f8f9fa;
+            padding: 15px 30px;
+            border-bottom: 1px solid #ecf0f1;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Upload Section -->
+    <div id="uploadSection" class="upload-section">
+        <div class="upload-container">
+            <div class="header">
+                <h1>📄 Legal Document Comparator</h1>
+                <p class="subtitle">AI-powered semantic document comparison with OCR support</p>
+            </div>
+
+            <div class="upload-grid">
+                <div class="upload-box">
+                    <h3>Document 1 (Original)</h3>
+                    <div class="drop-zone" id="dropZone1">
+                        <div class="drop-zone-content" id="dropContent1">
+                            <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                            <p class="drop-text">Drop file here or click to upload</p>
+                            <p class="file-types">PDF, PNG, JPG, DOC, DOCX (max 10MB)</p>
+                        </div>
+                        <div class="file-preview" id="preview1" style="display: none;">
+                            <span class="file-icon">📄</span>
+                            <span class="file-name" id="fileName1"></span>
+                            <button class="remove-btn" onclick="removeFile(1)">✕</button>
+                        </div>
+                        <input type="file" id="file1" accept=".pdf,.png,.jpg,.jpeg,.doc,.docx" hidden>
+                    </div>
+                </div>
+
+                <div class="upload-box">
+                    <h3>Document 2 (Revised)</h3>
+                    <div class="drop-zone" id="dropZone2">
+                        <div class="drop-zone-content" id="dropContent2">
+                            <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                            <p class="drop-text">Drop file here or click to upload</p>
+                            <p class="file-types">PDF, PNG, JPG, DOC, DOCX (max 10MB)</p>
+                        </div>
+                        <div class="file-preview" id="preview2" style="display: none;">
+                            <span class="file-icon">📄</span>
+                            <span class="file-name" id="fileName2"></span>
+                            <button class="remove-btn" onclick="removeFile(2)">✕</button>
+                        </div>
+                        <input type="file" id="file2" accept=".pdf,.png,.jpg,.jpeg,.doc,.docx" hidden>
+                    </div>
+                </div>
+            </div>
+
+            <button class="compare-btn" id="compareBtn" disabled onclick="startComparison()">
+                <span class="btn-icon">🔍</span>
+                Compare Documents
+            </button>
+
+            <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+                <div class="loading-spinner"></div>
+                <p id="loadingText">Uploading documents...</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comparison View Section -->
+    <div id="comparisonSection" class="comparison-section" style="display: none;">
+        <div id="comparisonResults"></div>
+        <!-- Top Navigation Bar -->
+        <div class="top-nav">
+            <div class="nav-left">
+                <button class="nav-btn" onclick="backToUpload()">
+                    <span>←</span> Back
+                </button>
+                <div class="doc-names">
+                    <span id="docName1" class="doc-name"></span>
+                    <span class="vs">vs</span>
+                    <span id="docName2" class="doc-name"></span>
+                </div>
+            </div>
+            <div class="nav-right">
+                <button class="nav-btn comment-btn" onclick="showGlobalNotesModal()">
+                    <span>📝</span> Document Notes
+                </button>
+            </div>
+        </div>
+
+        <!-- Summary Bar -->
+        <div class="summary-bar">
+            <div class="summary-stat">
+              <span class="stat-label">Strategy Used</span>
+              <span class="stat-value" id="strategyUsed">--</span>
+            </div>
+            <div class="summary-stat">
+                <span class="stat-label">Overall Match</span>
+                <span class="stat-value" id="overallMatch">--%</span>
+            </div>
+            <div class="summary-stat">
+                <span class="stat-label">Total Differences</span>
+                <span class="stat-value" id="totalDiffs">0</span>
+            </div>
+            <div class="summary-stat">
+                <span class="stat-label">High Priority</span>
+                <span class="stat-value" id="highPriority">0</span>
+            </div>
+            <div class="summary-stat">
+                <span class="stat-label">Comments Added</span>
+                <span class="stat-value" id="commentsCount">0</span>
+            </div>
+        </div>
+
+        <!-- Export Section -->
+        <div class="export-section">
+            <div class="export-controls">
+                <h3>📥 Export Report</h3>
+                <div class="export-options">
+                    <label>
+                        <input type="radio" name="exportFormat" value="pdf" checked>
+                        PDF Document
+                    </label>
+                    <label>
+                        <input type="radio" name="exportFormat" value="word">
+                        Word Document (.docx)
+                    </label>
+                </div>
+                <button class="export-btn" id="exportBtn" onclick="exportReport()">
+                    <span>📄</span> Generate & Download
+                </button>
+            </div>
+        </div>
+
+        <!-- Diff Navigation -->
+        <div id="diff-navigation" class="diff-navigation">
+            <button class="diff-nav-btn" id="prevDiffBtn" onclick="navigateDiff(-1)" disabled>
+                <span>◀</span> Previous
+            </button>
+            <span class="diff-counter" id="diffCounter">0 / 0</span>
+            <button class="diff-nav-btn" id="nextDiffBtn" onclick="navigateDiff(1)" disabled>
+                Next <span>▶</span>
+            </button>
+        </div>
+
+        <!-- Split View -->
+        <div class="split-view">
+            <div class="document-panel" id="doc1Panel">
+                <div class="panel-header">
+                    <h3>Document 1</h3>
+                    <span class="sentence-count" id="doc1Count">0 sentences</span>
+                </div>
+                <div class="document-content" id="doc1Content">
+                    <p class="placeholder">Processing document...</p>
+                </div>
+            </div>
+
+            <div class="document-panel" id="doc2Panel">
+                <div class="panel-header">
+                    <h3>Document 2</h3>
+                    <span class="sentence-count" id="doc2Count">0 sentences</span>
+                </div>
+                <div class="document-content" id="doc2Content">
+                    <p class="placeholder">Processing document...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Diff Detail Modal -->
+    <div class="modal-overlay" id="modalOverlay" style="display: none;" onclick="closeModal(event)">
+        <div class="modal" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h2 id="modalTitle">Difference Details</h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="modal-section">
+                    <div class="modal-meta">
+                        <span class="meta-item">
+                            <strong>Type:</strong> <span id="diffType">--</span>
+                        </span>
+                        <span class="meta-item">
+                            <strong>Severity:</strong> <span id="diffSeverity" class="severity-badge">--</span>
+                        </span>
+                        <span class="meta-item">
+                            <strong>Similarity:</strong> <span id="diffSimilarity">--%</span>
+                        </span>
+                        <span class="meta-item">
+                            <strong>Position:</strong> <span id="diffPosition">--</span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <h3>Original Text (Document 1)</h3>
+                    <div class="diff-text-box" id="diffText1">--</div>
+                </div>
+
+                <div class="modal-section">
+                    <h3>Revised Text (Document 2)</h3>
+                    <div class="diff-text-box" id="diffText2">--</div>
+                </div>
+
+                <div class="modal-section" id="aiAnalysisSection">
+                    <h3>🤖 AI Analysis</h3>
+                    <div class="ai-suggestions" id="aiSuggestions">
+                        <p>Loading analysis...</p>
+                    </div>
+                </div>
+
+                <div class="modal-section" id="recommendationSection">
+                    <h3>💡 Recommendation</h3>
+                    <div class="recommendation-box" id="recommendationText">--</div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+              <button class="action-btn" style="background: #9b59b6; margin-right: auto;" onclick="openCommentModal()">
+                    📝 Add Comment
+                </button>
+
+                <div class="modal-actions">
+                    <button class="action-btn accept-btn" onclick="markDiff('accept')">
+                        ✓ Accept
+                    </button>
+                    <button class="action-btn flag-btn" onclick="markDiff('flag')">
+                        ⚠ Flag for Review
+                    </button>
+                    <button class="action-btn skip-btn" onclick="markDiff('skip')">
+                        Skip
+                    </button>
+                </div>
+                <div class="modal-navigation">
+                    <button class="modal-nav-btn" onclick="navigateDiffInModal(-1)">
+                        ← Previous
+                    </button>
+                    <button class="modal-nav-btn" onclick="navigateDiffInModal(1)">
+                        Next →
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comment Modal (add before closing </body>) -->
+    <div class="modal-overlay" id="commentModal" style="display: none;" onclick="closeCommentModal(event)">
+        <div class="modal" onclick="event.stopPropagation()" style="max-width: 600px;">
+            <div class="modal-header">
+                <h2>📝 Add Comment</h2>
+                <button class="modal-close" onclick="closeCommentModal()">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>Difference #<span id="commentDiffNumber">-</span></h3>
+                    <p id="commentDiffSummary" style="color: #666; font-size: 0.9rem;"></p>
+                </div>
+
+                <div class="modal-section">
+                    <label for="commentInput" style="display: block; margin-bottom: 8px; font-weight: 600;">
+                        Your Comment:
+                    </label>
+                    <textarea
+                        id="commentInput"
+                        rows="6"
+                        style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; font-family: inherit; font-size: 0.95rem;"
+                        placeholder="Enter your notes about this difference...&#10;&#10;Example:&#10;- Reviewed with legal team&#10;- Acceptable variation&#10;- Requires follow-up"
+                    ></textarea>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="action-btn accept-btn" onclick="saveComment()">
+                    ✓ Save Comment
+                </button>
+                <button class="action-btn skip-btn" onclick="closeCommentModal()">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Notes Modal -->
+    <div class="modal-overlay" id="notesModal" style="display: none;" onclick="closeNotesModal(event)">
+        <div class="modal" onclick="event.stopPropagation()" style="max-width: 700px;">
+            <div class="modal-header">
+                <h2>📋 Document Notes</h2>
+                <button class="modal-close" onclick="closeNotesModal()">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="modal-section">
+                    <label for="globalNotesTextarea" style="display: block; margin-bottom: 8px; font-weight: 600;">
+                        Add notes about this comparison:
+                    </label>
+                    <textarea
+                        id="globalNotesTextarea"
+                        rows="10"
+                        style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; font-family: inherit; font-size: 0.95rem;"
+                        placeholder="Enter your overall notes about this document comparison...&#10;&#10;Example:&#10;- Overall comparison context&#10;- Key findings&#10;- Follow-up actions needed&#10;- Stakeholder approvals"
+                    ></textarea>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="action-btn accept-btn" onclick="saveGlobalNotes()">
+                    ✓ Save Notes
+                </button>
+                <button class="action-btn skip-btn" onclick="closeNotesModal()">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="/static/comparison_view.js"></script>
+</body>
+</html>

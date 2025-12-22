@@ -1,0 +1,33 @@
+{
+  "report_id": "report_3ae70562ae6d4848",
+  "summary": {
+    "overall_match": 100.0,
+    "total_sentences_doc1": 1028,
+    "total_sentences_doc2": 1028,
+    "matched_sentences": 1028,
+    "exact_matches": 1028,
+    "minor_differences": 0,
+    "significant_differences": 0,
+    "formatting_only": 0,
+    "ocr_errors": 0,
+    "avg_similarity": 1.0,
+    "exact_match": true,
+    "identity_check": true
+  },
+  "verdict": {
+    "status": "identical",
+    "message": "Documents are textually identical after normalization",
+    "color": "green"
+  },
+  "differences": [],
+  "recommendations": [
+    "✅ Documents are textually identical after normalization.",
+    "No differences detected - documents can be considered equivalent.",
+    "Processing completed in 0.23s using fast identity check."
+  ],
+  "file1_name": "Tenancy agreement.docx",
+  "file2_name": "Tenancy agreement.docx",
+  "processing_time": 0.23,
+  "sentences1": [],
+  "sentences2": []
+}

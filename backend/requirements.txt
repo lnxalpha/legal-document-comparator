@@ -12,6 +12,8 @@ mammoth
 python-docx==1.2.0
 easyocr==1.7.2
 opencv-python-headless
+reportlab==4.0.7
+python-docx==1.1.0
 
 # Smart Text Processing
 spacy==3.7.0
@@ -25,3 +27,4 @@ torch==2.0.1
 # Utilities
 python-dotenv==1.0.0
 aiofiles==23.2.1
+uuid==4.0.0

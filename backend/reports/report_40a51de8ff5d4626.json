@@ -1,0 +1,1865 @@
+{
+  "id": "report_40a51de8ff5d4626",
+  "timestamp": "2025-12-21T03:47:41.580707",
+  "file1_name": "WhatsApp Image 2025-12-15 at 6.19.14 PM.jpeg",
+  "file2_name": "Daily Bread.pdf",
+  "summary": {
+    "overall_match": 80.77,
+    "total_sentences_doc1": 22,
+    "total_sentences_doc2": 30,
+    "matched_sentences": 21,
+    "exact_matches": 13,
+    "minor_differences": 6,
+    "significant_differences": 10,
+    "missing_in_doc1": 9,
+    "missing_in_doc2": 1,
+    "merged_in_doc1": 0,
+    "merged_in_doc2": 0,
+    "reorderings_detected": 0,
+    "avg_similarity": 0.991,
+    "formatting_only": 0,
+    "ocr_errors": 0,
+    "number_formatting": 0
+  },
+  "differences": [
+    {
+      "type": "mismatch",
+      "classification": "rewording",
+      "severity": "medium",
+      "position1": 1,
+      "position2": 1,
+      "sentence1": "@ROMANS 12:14-21 TUESDAY | SEPTEMBER 16 po not be overcome by evil, put overcome evil with good.",
+      "sentence2": "ROMANS 12:14-21 Do not be overcome by evil, but overcome evil with good.",
+      "similarity": 0.9203267097473145,
+      "suggestions": [
+        "Length difference: 24 characters",
+        "Word count difference: 17 vs 13 words",
+        "Text removed in Doc2"
+      ],
+      "relocated": false,
+      "diff_html1": "<del style=\"background:#ffe6e6;\">@ROMANS</del> 12:14-21 <del style=\"background:#ffe6e6;\">TUESDAY | SEPTEMBER 16 po</del> not be overcome by evil, <del style=\"background:#ffe6e6;\">put</del> overcome evil with good.",
+      "diff_html2": "<ins style=\"background:#e6ffe6;\">ROMANS</ins> 12:14-21 <ins style=\"background:#e6ffe6;\">Do</ins> not be overcome by evil, <ins style=\"background:#e6ffe6;\">but</ins> overcome evil with good.",
+      "diff_stats": {
+        "char_changes": 25,
+        "words_changed": 10,
+        "additions": 0,
+        "deletions": 3,
+        "replacements": 1
+      },
+      "explanation": null
+    },
+    {
+      "type": "mismatch",
+      "classification": "rewording",
+      "severity": "medium",
+      "position1": 2,
+      "position2": 2,
+      "sentence1": "[ RomANS 12:21 | OVERCOMING EVIL WITH GOOD - octor.",
+      "sentence2": "TUESDAY SEPTEMBER 16 ROMANS 12:21 OVERCOMING EVIL WITH GOOD octor.",
+      "similarity": 0.9343317747116089,
+      "suggestions": [
+        "Length difference: 15 characters",
+        "Text removed in Doc2"
+      ],
+      "relocated": false,
+      "diff_html1": "<del style=\"background:#ffe6e6;\">[ RomANS</del> 12:21 <del style=\"background:#ffe6e6;\">|</del> OVERCOMING EVIL WITH GOOD <del style=\"background:#ffe6e6;\">-</del> octor.",
+      "diff_html2": "<ins style=\"background:#e6ffe6;\">TUESDAY SEPTEMBER 16 ROMANS</ins> 12:21 OVERCOMING EVIL WITH GOOD octor.",
+      "diff_stats": {
+        "char_changes": 26,
+        "words_changed": 8,
+        "additions": 0,
+        "deletions": 2,
+        "replacements": 2
+      },
+      "explanation": null
+    },
+    {
+      "type": "mismatch",
+      "classification": "minor_difference",
+      "severity": "low",
+      "position1": 3,
+      "position2": 3,
+      "sentence1": "Dolittle, the fictional doctor who converses with ani- mals, has delighted fans through books, movies, and plays.",
+      "sentence2": "Dolittle, the fictional doctor whio converses with ani- mals, has delighted fans through books, movies, and plays.",
+      "similarity": 0.9788932800292969,
+      "suggestions": [
+        "Text added in Doc2"
+      ],
+      "relocated": false,
+      "diff_html1": "Dolittle, the fictional doctor <del style=\"background:#ffe6e6;\">who</del> converses with ani- mals, has delighted fans through books, movies, and plays.",
+      "diff_html2": "Dolittle, the fictional doctor <ins style=\"background:#e6ffe6;\">whio</ins> converses with ani- mals, has delighted fans through books, movies, and plays.",
+      "diff_stats": {
+        "char_changes": 1,
+        "words_changed": 2,
+        "additions": 1,
+        "deletions": 0,
+        "replacements": 0
+      },
+      "explanation": null
+    },
+    {
+      "type": "mismatch",
+      "classification": "minor_difference",
+      "severity": "low",
+      "position1": 7,
+      "position2": 7,
+      "sentence1": "War I. He later said that the war was too awful to recount in his letters—so he wrote and illustrated stories instead.",
+      "sentence2": "War I. He later said that the war was too awful to recount in his letters--so he wrote and illustrated stories instead.",
+      "similarity": 0.9838902950286865,
+      "suggestions": [
+        "Character substitutions only (likely OCR)",
+        "Only formatting differs (case, punctuation, spacing)"
+      ],
+      "relocated": false,
+      "diff_html1": "War I. He later said that the war was too awful to recount in his <del style=\"background:#ffe6e6;\">letters—so</del> he wrote and illustrated stories instead.",
+      "diff_html2": "War I. He later said that the war was too awful to recount in his <ins style=\"background:#e6ffe6;\">letters--so</ins> he wrote and illustrated stories instead.",
+      "diff_stats": {
+        "char_changes": 2,
+        "words_changed": 2,
+        "additions": 0,
+        "deletions": 0,
+        "replacements": 1
+      },
+      "explanation": null
+    },
+    {
+      "type": "mismatch",
+      "classification": "minor_difference",
+      "severity": "low",
+      "position1": 9,
+      "position2": 9,
+      "sentence1": "Lofting’s way of pushing back against the war’s horror.",
+      "sentence2": "Lofting's way of pushing back against the war's horror.",
+      "similarity": 0.9939458966255188,
+      "suggestions": [
+        "Character substitutions only (likely OCR)",
+        "Only formatting differs (case, punctuation, spacing)"
+      ],
+      "relocated": false,
+      "diff_html1": "<del style=\"background:#ffe6e6;\">Lofting’s</del> way of pushing back against the <del style=\"background:#ffe6e6;\">war’s</del> horror.",
+      "diff_html2": "<ins style=\"background:#e6ffe6;\">Lofting&#x27;s</ins> way of pushing back against the <ins style=\"background:#e6ffe6;\">war&#x27;s</ins> horror.",
+      "diff_stats": {
+        "char_changes": 2,
+        "words_changed": 4,
+        "additions": 0,
+        "deletions": 0,
+        "replacements": 2
+      },
+      "explanation": null
+    },
+    {
+      "type": "mismatch",
+      "classification": "minor_difference",
+      "severity": "low",
+      "position1": 10,
+      "position2": 10,
+      "sentence1": "It’s inspiring to see a person movlng against the menacing, degrading forces that seem too powerful to thwart.",
+      "sentence2": "It's inspiring to see a person movlng against the menacing, degrading forces that seem too powerful to thwart.",
+      "similarity": 0.9981093406677246,
+      "suggestions": [
+        "Character substitutions only (likely OCR)",
+        "Only formatting differs (case, punctuation, spacing)"
+      ],
+      "relocated": false,
+      "diff_html1": "<del style=\"background:#ffe6e6;\">It’s</del> inspiring to see a person movlng against the menacing, degrading forces that seem too powerful to thwart.",
+      "diff_html2": "<ins style=\"background:#e6ffe6;\">It&#x27;s</ins> inspiring to see a person movlng against the menacing, degrading forces that seem too powerful to thwart.",
+      "diff_stats": {
+        "char_changes": 1,
+        "words_changed": 2,
+        "additions": 0,
+        "deletions": 0,
+        "replacements": 1
+      },
+      "explanation": null
+    },
+    {
+      "type": "mismatch",
+      "classification": "minor_difference",
+      "severity": "low",
+      "position1": 12,
+      "position2": 12,
+      "sentence1": "Sometimes we fear that the whole world will be “overcome by evil” (ROMANS 12:21).",
+      "sentence2": "Sometimes we fear that the whole world will be \"overcome by evil'\"(ROMANS 12:21).",
+      "similarity": 0.9983769059181213,
+      "suggestions": [
+        "Character substitutions only (likely OCR)",
+        "Only formatting differs (case, punctuation, spacing)"
+      ],
+      "relocated": false,
+      "diff_html1": "Sometimes we fear that the whole world will be <del style=\"background:#ffe6e6;\">“overcome</del> by <del style=\"background:#ffe6e6;\">evil” (ROMANS</del> 12:21).",
+      "diff_html2": "Sometimes we fear that the whole world will be <ins style=\"background:#e6ffe6;\">&quot;overcome</ins> by <ins style=\"background:#e6ffe6;\">evil&#x27;&quot;(ROMANS</ins> 12:21).",
+      "diff_stats": {
+        "char_changes": 3,
+        "words_changed": 5,
+        "additions": 0,
+        "deletions": 0,
+        "replacements": 2
+      },
+      "explanation": null
+    },
+    {
+      "type": "mismatch",
+      "classification": "minor_difference",
+      "severity": "low",
+      "position1": 16,
+      "position2": 16,
+      "sentence1": "His divine strength, places us in the action, and calls us to “overcome evil with good” (v. 21).",
+      "sentence2": "His divine strength, places us in the action, and calls us to\"overcome evil with good\" (V. 21).",
+      "similarity": 0.9985069632530212,
+      "suggestions": [
+        "Character substitutions only (likely OCR)",
+        "Only formatting differs (case, punctuation, spacing)"
+      ],
+      "relocated": false,
+      "diff_html1": "His divine strength, places us in the action, and calls us <del style=\"background:#ffe6e6;\">to “overcome</del> evil with <del style=\"background:#ffe6e6;\">good” (v.</del> 21).",
+      "diff_html2": "His divine strength, places us in the action, and calls us <ins style=\"background:#e6ffe6;\">to&quot;overcome</ins> evil with <ins style=\"background:#e6ffe6;\">good&quot; (V.</ins> 21).",
+      "diff_stats": {
+        "char_changes": 4,
+        "words_changed": 7,
+        "additions": 0,
+        "deletions": 0,
+        "replacements": 3
+      },
+      "explanation": null
+    },
+    {
+      "type": "missing_in_doc2",
+      "classification": "addition",
+      "severity": "high",
+      "position1": 22,
+      "position2": null,
+      "sentence1": "Sorﬁe ﬁf usrs'trlén:erGod‘s story through melody, poetry, or conversa-",
+      "sentence2": null,
+      "similarity": 0.0,
+      "suggestions": [
+        "This sentence appears in document 1 but not in document 2"
+      ],
+      "diff_html1": null,
+      "diff_html2": null,
+      "explanation": null
+    },
+    {
+      "type": "missing_in_doc1",
+      "classification": "addition",
+      "severity": "high",
+      "position1": null,
+      "position2": 22,
+      "sentence1": null,
+      "sentence2": "Some of us share.",
+      "similarity": 0.0,
+      "suggestions": [
+        "This sentence appears in document 2 but not in document 1"
+      ],
+      "diff_html1": null,
+      "diff_html2": null,
+      "explanation": null
+    },
+    {
+      "type": "missing_in_doc1",
+      "classification": "addition",
+      "severity": "high",
+      "position1": null,
+      "position2": 23,
+      "sentence1": null,
+      "sentence2": "God's story through melody, poetry, or conversa- tion.",
+      "similarity": 0.0,
+      "suggestions": [
+        "This sentence appears in document 2 but not in document 1"
+      ],
+      "diff_html1": null,
+      "diff_html2": null,
+      "explanation": null
+    },
+    {
+      "type": "missing_in_doc1",
+      "classification": "addition",
+      "severity": "high",
+      "position1": null,
+      "position2": 24,
+      "sentence1": null,
+      "sentence2": "In a myriad of ways, we carry.",
+      "similarity": 0.0,
+      "suggestions": [
+        "This sentence appears in document 2 but not in document 1"
+      ],
+      "diff_html1": null,
+      "diff_html2": null,
+      "explanation": null
+    },
+    {
+      "type": "missing_in_doc1",
+      "classification": "addition",
+      "severity": "high",
+      "position1": null,
+      "position2": 25,
+      "sentence1": null,
+      "sentence2": "His goodness and peace into the world (V. 18), overcoming evil as we go.",
+      "similarity": 0.0,
+      "suggestions": [
+        "This sentence appears in document 2 but not in document 1"
+      ],
+      "diff_html1": null,
+      "diff_html2": null,
+      "explanation": null
+    },
+    {
+      "type": "missing_in_doc1",
+      "classification": "addition",
+      "severity": "high",
+      "position1": null,
+      "position2": 26,
+      "sentence1": null,
+      "sentence2": "WINN COLLIER Where do you see evil lurking?",
+      "similarity": 0.0,
+      "suggestions": [
+        "This sentence appears in document 2 but not in document 1"
+      ],
+      "diff_html1": null,
+      "diff_html2": null,
+      "explanation": null
+    },
+    {
+      "type": "missing_in_doc1",
+      "classification": "addition",
+      "severity": "high",
+      "position1": null,
+      "position2": 27,
+      "sentence1": null,
+      "sentence2": "How can you be part of overcoming evil with good?",
+      "similarity": 0.0,
+      "suggestions": [
+        "This sentence appears in document 2 but not in document 1"
+      ],
+      "diff_html1": null,
+      "diff_html2": null,
+      "explanation": null
+    },
+    {
+      "type": "missing_in_doc1",
+      "classification": "addition",
+      "severity": "high",
+      "position1": null,
+      "position2": 28,
+      "sentence1": null,
+      "sentence2": "Dear.",
+      "similarity": 0.0,
+      "suggestions": [
+        "This sentence appears in document 2 but not in document 1"
+      ],
+      "diff_html1": null,
+      "diff_html2": null,
+      "explanation": null
+    },
+    {
+      "type": "missing_in_doc1",
+      "classification": "addition",
+      "severity": "high",
+      "position1": null,
+      "position2": 29,
+      "sentence1": null,
+      "sentence2": "God, please help me be part of overcoming evil with good.",
+      "similarity": 0.0,
+      "suggestions": [
+        "This sentence appears in document 2 but not in document 1"
+      ],
+      "diff_html1": null,
+      "diff_html2": null,
+      "explanation": null
+    },
+    {
+      "type": "missing_in_doc1",
+      "classification": "addition",
+      "severity": "high",
+      "position1": null,
+      "position2": 30,
+      "sentence1": null,
+      "sentence2": "BIBLE IN A YEAR PROVERBS 25-26; 2 CORINTHIANS 9",
+      "similarity": 0.0,
+      "suggestions": [
+        "This sentence appears in document 2 but not in document 1"
+      ],
+      "diff_html1": null,
+      "diff_html2": null,
+      "explanation": null
+    }
+  ],
+  "recommendations": [
+    "9 sentence(s) appear only in document 2. Check if content was added or if OCR missed these sections.",
+    "1 sentence(s) appear only in document 1. Check if content was removed or if OCR failed.",
+    "Documents have notable content differences. Manual review recommended for important documents."
+  ],
+  "sentences1": [
+    {
+      "id": 0,
+      "text": "@ROMANS 12:14-21 TUESDAY | SEPTEMBER 16 po not be overcome by evil, put overcome evil with good.",
+      "start_char": 0,
+      "end_char": 96,
+      "length": 96,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 1,
+      "text": "[ RomANS 12:21 | OVERCOMING EVIL WITH GOOD - octor.",
+      "start_char": 97,
+      "end_char": 148,
+      "length": 51,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 2,
+      "text": "Dolittle, the fictional doctor who converses with ani- mals, has delighted fans through books, movies, and plays.",
+      "start_char": 149,
+      "end_char": 262,
+      "length": 113,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 3,
+      "text": "However, few people know that author.",
+      "start_char": 263,
+      "end_char": 300,
+      "length": 37,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 4,
+      "text": "Hugh.",
+      "start_char": 301,
+      "end_char": 306,
+      "length": 5,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 5,
+      "text": "Lofting first wrote the Dolittle tales to his children from the ghastly trenches of World.",
+      "start_char": 307,
+      "end_char": 397,
+      "length": 90,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 6,
+      "text": "War I. He later said that the war was too awful to recount in his letters—so he wrote and illustrated stories instead.",
+      "start_char": 398,
+      "end_char": 516,
+      "length": 118,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 7,
+      "text": "These whimsical, joy-filled tales were.",
+      "start_char": 517,
+      "end_char": 556,
+      "length": 39,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 8,
+      "text": "Lofting’s way of pushing back against the war’s horror.",
+      "start_char": 557,
+      "end_char": 612,
+      "length": 55,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 9,
+      "text": "It’s inspiring to see a person movlng against the menacing, degrading forces that seem too powerful to thwart.",
+      "start_char": 613,
+      "end_char": 723,
+      "length": 110,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 10,
+      "text": "We admire this resilient courage because we fear that injustice, violence, and greed will triumph.",
+      "start_char": 724,
+      "end_char": 822,
+      "length": 98,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 11,
+      "text": "Sometimes we fear that the whole world will be “overcome by evil” (ROMANS 12:21).",
+      "start_char": 823,
+      "end_char": 904,
+      "length": 81,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 12,
+      "text": "And these fears are well-founded if we're left to ourselves.",
+      "start_char": 905,
+      "end_char": 965,
+      "length": 60,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 13,
+      "text": "However, God has not left us to ourselves.",
+      "start_char": 966,
+      "end_char": 1008,
+      "length": 42,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 14,
+      "text": "He fills us with.",
+      "start_char": 1009,
+      "end_char": 1026,
+      "length": 17,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 15,
+      "text": "His divine strength, places us in the action, and calls us to “overcome evil with good” (v. 21).",
+      "start_char": 1027,
+      "end_char": 1123,
+      "length": 96,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 16,
+      "text": "We each overcome evil with good in WHATEVER ways.",
+      "start_char": 1124,
+      "end_char": 1173,
+      "length": 49,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 17,
+      "text": "God has put into our hearts.",
+      "start_char": 1174,
+      "end_char": 1202,
+      "length": 28,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 18,
+      "text": "Some of us write beautiful stories.",
+      "start_char": 1203,
+      "end_char": 1238,
+      "length": 35,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 19,
+      "text": "Some of us care for the poor.",
+      "start_char": 1239,
+      "end_char": 1268,
+      "length": 29,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 20,
+      "text": "Some of us make our homes places of welcome.",
+      "start_char": 1269,
+      "end_char": 1313,
+      "length": 44,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 21,
+      "text": "Sorﬁe ﬁf usrs'trlén:erGod‘s story through melody, poetry, or conversa-",
+      "start_char": 1314,
+      "end_char": 1384,
+      "length": 70,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    }
+  ],
+  "sentences2": [
+    {
+      "id": 0,
+      "text": "ROMANS 12:14-21 Do not be overcome by evil, but overcome evil with good.",
+      "start_char": 0,
+      "end_char": 72,
+      "length": 72,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 1,
+      "text": "TUESDAY SEPTEMBER 16 ROMANS 12:21 OVERCOMING EVIL WITH GOOD octor.",
+      "start_char": 73,
+      "end_char": 139,
+      "length": 66,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 2,
+      "text": "Dolittle, the fictional doctor whio converses with ani- mals, has delighted fans through books, movies, and plays.",
+      "start_char": 140,
+      "end_char": 254,
+      "length": 114,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 3,
+      "text": "However, few people know that author.",
+      "start_char": 255,
+      "end_char": 292,
+      "length": 37,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 4,
+      "text": "Hugh.",
+      "start_char": 293,
+      "end_char": 298,
+      "length": 5,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 5,
+      "text": "Lofting first wrote the Dolittle tales to his children from the ghastly trenches of World.",
+      "start_char": 299,
+      "end_char": 389,
+      "length": 90,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 6,
+      "text": "War I. He later said that the war was too awful to recount in his letters--so he wrote and illustrated stories instead.",
+      "start_char": 390,
+      "end_char": 509,
+      "length": 119,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 7,
+      "text": "These whimsical, joy-filled tales were.",
+      "start_char": 510,
+      "end_char": 549,
+      "length": 39,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 8,
+      "text": "Lofting's way of pushing back against the war's horror.",
+      "start_char": 550,
+      "end_char": 605,
+      "length": 55,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 9,
+      "text": "It's inspiring to see a person movlng against the menacing, degrading forces that seem too powerful to thwart.",
+      "start_char": 606,
+      "end_char": 716,
+      "length": 110,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 10,
+      "text": "We admire this resilient courage because we fear that injustice, violence, and greed will triumph.",
+      "start_char": 717,
+      "end_char": 815,
+      "length": 98,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 11,
+      "text": "Sometimes we fear that the whole world will be \"overcome by evil'\"(ROMANS 12:21).",
+      "start_char": 816,
+      "end_char": 897,
+      "length": 81,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 12,
+      "text": "And these fears are well-founded if we're left to ourselves.",
+      "start_char": 898,
+      "end_char": 958,
+      "length": 60,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 13,
+      "text": "However, God has not left us to ourselves.",
+      "start_char": 959,
+      "end_char": 1001,
+      "length": 42,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 14,
+      "text": "He fills us with.",
+      "start_char": 1002,
+      "end_char": 1019,
+      "length": 17,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 15,
+      "text": "His divine strength, places us in the action, and calls us to\"overcome evil with good\" (V. 21).",
+      "start_char": 1020,
+      "end_char": 1115,
+      "length": 95,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 16,
+      "text": "We each overcome evil with good in WHATEVER ways.",
+      "start_char": 1116,
+      "end_char": 1165,
+      "length": 49,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 17,
+      "text": "God has put into our hearts.",
+      "start_char": 1166,
+      "end_char": 1194,
+      "length": 28,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 18,
+      "text": "Some of us write beautiful stories.",
+      "start_char": 1195,
+      "end_char": 1230,
+      "length": 35,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 19,
+      "text": "Some of us care for the poor.",
+      "start_char": 1231,
+      "end_char": 1260,
+      "length": 29,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 20,
+      "text": "Some of us make our homes places of welcome.",
+      "start_char": 1261,
+      "end_char": 1305,
+      "length": 44,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 21,
+      "text": "Some of us share.",
+      "start_char": 1306,
+      "end_char": 1323,
+      "length": 17,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 22,
+      "text": "God's story through melody, poetry, or conversa- tion.",
+      "start_char": 1324,
+      "end_char": 1378,
+      "length": 54,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 23,
+      "text": "In a myriad of ways, we carry.",
+      "start_char": 1379,
+      "end_char": 1409,
+      "length": 30,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 24,
+      "text": "His goodness and peace into the world (V. 18), overcoming evil as we go.",
+      "start_char": 1410,
+      "end_char": 1482,
+      "length": 72,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 25,
+      "text": "WINN COLLIER Where do you see evil lurking?",
+      "start_char": 1483,
+      "end_char": 1526,
+      "length": 43,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 26,
+      "text": "How can you be part of overcoming evil with good?",
+      "start_char": 1527,
+      "end_char": 1576,
+      "length": 49,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 27,
+      "text": "Dear.",
+      "start_char": 1577,
+      "end_char": 1582,
+      "length": 5,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 28,
+      "text": "God, please help me be part of overcoming evil with good.",
+      "start_char": 1583,
+      "end_char": 1640,
+      "length": 57,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    },
+    {
+      "id": 29,
+      "text": "BIBLE IN A YEAR PROVERBS 25-26; 2 CORINTHIANS 9",
+      "start_char": 1641,
+      "end_char": 1688,
+      "length": 47,
+      "confidence": 1.0,
+      "source": "unknown",
+      "line_id": null,
+      "collapsed_count": 1
+    }
+  ],
+  "full_report": {
+    "summary": {
+      "overall_match": 80.77,
+      "total_sentences_doc1": 22,
+      "total_sentences_doc2": 30,
+      "matched_sentences": 21,
+      "exact_matches": 13,
+      "minor_differences": 6,
+      "significant_differences": 10,
+      "missing_in_doc1": 9,
+      "missing_in_doc2": 1,
+      "merged_in_doc1": 0,
+      "merged_in_doc2": 0,
+      "reorderings_detected": 0,
+      "avg_similarity": 0.991,
+      "formatting_only": 0,
+      "ocr_errors": 0,
+      "number_formatting": 0
+    },
+    "verdict": {
+      "status": "similar",
+      "message": "Documents are similar but have notable differences",
+      "color": "yellow",
+      "confidence": "high"
+    },
+    "differences": [
+      {
+        "type": "mismatch",
+        "classification": "rewording",
+        "severity": "medium",
+        "position1": 1,
+        "position2": 1,
+        "sentence1": "@ROMANS 12:14-21 TUESDAY | SEPTEMBER 16 po not be overcome by evil, put overcome evil with good.",
+        "sentence2": "ROMANS 12:14-21 Do not be overcome by evil, but overcome evil with good.",
+        "similarity": 0.9203267097473145,
+        "suggestions": [
+          "Length difference: 24 characters",
+          "Word count difference: 17 vs 13 words",
+          "Text removed in Doc2"
+        ],
+        "relocated": false,
+        "diff_html1": "<del style=\"background:#ffe6e6;\">@ROMANS</del> 12:14-21 <del style=\"background:#ffe6e6;\">TUESDAY | SEPTEMBER 16 po</del> not be overcome by evil, <del style=\"background:#ffe6e6;\">put</del> overcome evil with good.",
+        "diff_html2": "<ins style=\"background:#e6ffe6;\">ROMANS</ins> 12:14-21 <ins style=\"background:#e6ffe6;\">Do</ins> not be overcome by evil, <ins style=\"background:#e6ffe6;\">but</ins> overcome evil with good.",
+        "diff_stats": {
+          "char_changes": 25,
+          "words_changed": 10,
+          "additions": 0,
+          "deletions": 3,
+          "replacements": 1
+        },
+        "explanation": null
+      },
+      {
+        "type": "mismatch",
+        "classification": "rewording",
+        "severity": "medium",
+        "position1": 2,
+        "position2": 2,
+        "sentence1": "[ RomANS 12:21 | OVERCOMING EVIL WITH GOOD - octor.",
+        "sentence2": "TUESDAY SEPTEMBER 16 ROMANS 12:21 OVERCOMING EVIL WITH GOOD octor.",
+        "similarity": 0.9343317747116089,
+        "suggestions": [
+          "Length difference: 15 characters",
+          "Text removed in Doc2"
+        ],
+        "relocated": false,
+        "diff_html1": "<del style=\"background:#ffe6e6;\">[ RomANS</del> 12:21 <del style=\"background:#ffe6e6;\">|</del> OVERCOMING EVIL WITH GOOD <del style=\"background:#ffe6e6;\">-</del> octor.",
+        "diff_html2": "<ins style=\"background:#e6ffe6;\">TUESDAY SEPTEMBER 16 ROMANS</ins> 12:21 OVERCOMING EVIL WITH GOOD octor.",
+        "diff_stats": {
+          "char_changes": 26,
+          "words_changed": 8,
+          "additions": 0,
+          "deletions": 2,
+          "replacements": 2
+        },
+        "explanation": null
+      },
+      {
+        "type": "mismatch",
+        "classification": "minor_difference",
+        "severity": "low",
+        "position1": 3,
+        "position2": 3,
+        "sentence1": "Dolittle, the fictional doctor who converses with ani- mals, has delighted fans through books, movies, and plays.",
+        "sentence2": "Dolittle, the fictional doctor whio converses with ani- mals, has delighted fans through books, movies, and plays.",
+        "similarity": 0.9788932800292969,
+        "suggestions": [
+          "Text added in Doc2"
+        ],
+        "relocated": false,
+        "diff_html1": "Dolittle, the fictional doctor <del style=\"background:#ffe6e6;\">who</del> converses with ani- mals, has delighted fans through books, movies, and plays.",
+        "diff_html2": "Dolittle, the fictional doctor <ins style=\"background:#e6ffe6;\">whio</ins> converses with ani- mals, has delighted fans through books, movies, and plays.",
+        "diff_stats": {
+          "char_changes": 1,
+          "words_changed": 2,
+          "additions": 1,
+          "deletions": 0,
+          "replacements": 0
+        },
+        "explanation": null
+      },
+      {
+        "type": "mismatch",
+        "classification": "minor_difference",
+        "severity": "low",
+        "position1": 7,
+        "position2": 7,
+        "sentence1": "War I. He later said that the war was too awful to recount in his letters—so he wrote and illustrated stories instead.",
+        "sentence2": "War I. He later said that the war was too awful to recount in his letters--so he wrote and illustrated stories instead.",
+        "similarity": 0.9838902950286865,
+        "suggestions": [
+          "Character substitutions only (likely OCR)",
+          "Only formatting differs (case, punctuation, spacing)"
+        ],
+        "relocated": false,
+        "diff_html1": "War I. He later said that the war was too awful to recount in his <del style=\"background:#ffe6e6;\">letters—so</del> he wrote and illustrated stories instead.",
+        "diff_html2": "War I. He later said that the war was too awful to recount in his <ins style=\"background:#e6ffe6;\">letters--so</ins> he wrote and illustrated stories instead.",
+        "diff_stats": {
+          "char_changes": 2,
+          "words_changed": 2,
+          "additions": 0,
+          "deletions": 0,
+          "replacements": 1
+        },
+        "explanation": null
+      },
+      {
+        "type": "mismatch",
+        "classification": "minor_difference",
+        "severity": "low",
+        "position1": 9,
+        "position2": 9,
+        "sentence1": "Lofting’s way of pushing back against the war’s horror.",
+        "sentence2": "Lofting's way of pushing back against the war's horror.",
+        "similarity": 0.9939458966255188,
+        "suggestions": [
+          "Character substitutions only (likely OCR)",
+          "Only formatting differs (case, punctuation, spacing)"
+        ],
+        "relocated": false,
+        "diff_html1": "<del style=\"background:#ffe6e6;\">Lofting’s</del> way of pushing back against the <del style=\"background:#ffe6e6;\">war’s</del> horror.",
+        "diff_html2": "<ins style=\"background:#e6ffe6;\">Lofting&#x27;s</ins> way of pushing back against the <ins style=\"background:#e6ffe6;\">war&#x27;s</ins> horror.",
+        "diff_stats": {
+          "char_changes": 2,
+          "words_changed": 4,
+          "additions": 0,
+          "deletions": 0,
+          "replacements": 2
+        },
+        "explanation": null
+      },
+      {
+        "type": "mismatch",
+        "classification": "minor_difference",
+        "severity": "low",
+        "position1": 10,
+        "position2": 10,
+        "sentence1": "It’s inspiring to see a person movlng against the menacing, degrading forces that seem too powerful to thwart.",
+        "sentence2": "It's inspiring to see a person movlng against the menacing, degrading forces that seem too powerful to thwart.",
+        "similarity": 0.9981093406677246,
+        "suggestions": [
+          "Character substitutions only (likely OCR)",
+          "Only formatting differs (case, punctuation, spacing)"
+        ],
+        "relocated": false,
+        "diff_html1": "<del style=\"background:#ffe6e6;\">It’s</del> inspiring to see a person movlng against the menacing, degrading forces that seem too powerful to thwart.",
+        "diff_html2": "<ins style=\"background:#e6ffe6;\">It&#x27;s</ins> inspiring to see a person movlng against the menacing, degrading forces that seem too powerful to thwart.",
+        "diff_stats": {
+          "char_changes": 1,
+          "words_changed": 2,
+          "additions": 0,
+          "deletions": 0,
+          "replacements": 1
+        },
+        "explanation": null
+      },
+      {
+        "type": "mismatch",
+        "classification": "minor_difference",
+        "severity": "low",
+        "position1": 12,
+        "position2": 12,
+        "sentence1": "Sometimes we fear that the whole world will be “overcome by evil” (ROMANS 12:21).",
+        "sentence2": "Sometimes we fear that the whole world will be \"overcome by evil'\"(ROMANS 12:21).",
+        "similarity": 0.9983769059181213,
+        "suggestions": [
+          "Character substitutions only (likely OCR)",
+          "Only formatting differs (case, punctuation, spacing)"
+        ],
+        "relocated": false,
+        "diff_html1": "Sometimes we fear that the whole world will be <del style=\"background:#ffe6e6;\">“overcome</del> by <del style=\"background:#ffe6e6;\">evil” (ROMANS</del> 12:21).",
+        "diff_html2": "Sometimes we fear that the whole world will be <ins style=\"background:#e6ffe6;\">&quot;overcome</ins> by <ins style=\"background:#e6ffe6;\">evil&#x27;&quot;(ROMANS</ins> 12:21).",
+        "diff_stats": {
+          "char_changes": 3,
+          "words_changed": 5,
+          "additions": 0,
+          "deletions": 0,
+          "replacements": 2
+        },
+        "explanation": null
+      },
+      {
+        "type": "mismatch",
+        "classification": "minor_difference",
+        "severity": "low",
+        "position1": 16,
+        "position2": 16,
+        "sentence1": "His divine strength, places us in the action, and calls us to “overcome evil with good” (v. 21).",
+        "sentence2": "His divine strength, places us in the action, and calls us to\"overcome evil with good\" (V. 21).",
+        "similarity": 0.9985069632530212,
+        "suggestions": [
+          "Character substitutions only (likely OCR)",
+          "Only formatting differs (case, punctuation, spacing)"
+        ],
+        "relocated": false,
+        "diff_html1": "His divine strength, places us in the action, and calls us <del style=\"background:#ffe6e6;\">to “overcome</del> evil with <del style=\"background:#ffe6e6;\">good” (v.</del> 21).",
+        "diff_html2": "His divine strength, places us in the action, and calls us <ins style=\"background:#e6ffe6;\">to&quot;overcome</ins> evil with <ins style=\"background:#e6ffe6;\">good&quot; (V.</ins> 21).",
+        "diff_stats": {
+          "char_changes": 4,
+          "words_changed": 7,
+          "additions": 0,
+          "deletions": 0,
+          "replacements": 3
+        },
+        "explanation": null
+      },
+      {
+        "type": "missing_in_doc2",
+        "classification": "addition",
+        "severity": "high",
+        "position1": 22,
+        "position2": null,
+        "sentence1": "Sorﬁe ﬁf usrs'trlén:erGod‘s story through melody, poetry, or conversa-",
+        "sentence2": null,
+        "similarity": 0.0,
+        "suggestions": [
+          "This sentence appears in document 1 but not in document 2"
+        ],
+        "diff_html1": null,
+        "diff_html2": null,
+        "explanation": null
+      },
+      {
+        "type": "missing_in_doc1",
+        "classification": "addition",
+        "severity": "high",
+        "position1": null,
+        "position2": 22,
+        "sentence1": null,
+        "sentence2": "Some of us share.",
+        "similarity": 0.0,
+        "suggestions": [
+          "This sentence appears in document 2 but not in document 1"
+        ],
+        "diff_html1": null,
+        "diff_html2": null,
+        "explanation": null
+      },
+      {
+        "type": "missing_in_doc1",
+        "classification": "addition",
+        "severity": "high",
+        "position1": null,
+        "position2": 23,
+        "sentence1": null,
+        "sentence2": "God's story through melody, poetry, or conversa- tion.",
+        "similarity": 0.0,
+        "suggestions": [
+          "This sentence appears in document 2 but not in document 1"
+        ],
+        "diff_html1": null,
+        "diff_html2": null,
+        "explanation": null
+      },
+      {
+        "type": "missing_in_doc1",
+        "classification": "addition",
+        "severity": "high",
+        "position1": null,
+        "position2": 24,
+        "sentence1": null,
+        "sentence2": "In a myriad of ways, we carry.",
+        "similarity": 0.0,
+        "suggestions": [
+          "This sentence appears in document 2 but not in document 1"
+        ],
+        "diff_html1": null,
+        "diff_html2": null,
+        "explanation": null
+      },
+      {
+        "type": "missing_in_doc1",
+        "classification": "addition",
+        "severity": "high",
+        "position1": null,
+        "position2": 25,
+        "sentence1": null,
+        "sentence2": "His goodness and peace into the world (V. 18), overcoming evil as we go.",
+        "similarity": 0.0,
+        "suggestions": [
+          "This sentence appears in document 2 but not in document 1"
+        ],
+        "diff_html1": null,
+        "diff_html2": null,
+        "explanation": null
+      },
+      {
+        "type": "missing_in_doc1",
+        "classification": "addition",
+        "severity": "high",
+        "position1": null,
+        "position2": 26,
+        "sentence1": null,
+        "sentence2": "WINN COLLIER Where do you see evil lurking?",
+        "similarity": 0.0,
+        "suggestions": [
+          "This sentence appears in document 2 but not in document 1"
+        ],
+        "diff_html1": null,
+        "diff_html2": null,
+        "explanation": null
+      },
+      {
+        "type": "missing_in_doc1",
+        "classification": "addition",
+        "severity": "high",
+        "position1": null,
+        "position2": 27,
+        "sentence1": null,
+        "sentence2": "How can you be part of overcoming evil with good?",
+        "similarity": 0.0,
+        "suggestions": [
+          "This sentence appears in document 2 but not in document 1"
+        ],
+        "diff_html1": null,
+        "diff_html2": null,
+        "explanation": null
+      },
+      {
+        "type": "missing_in_doc1",
+        "classification": "addition",
+        "severity": "high",
+        "position1": null,
+        "position2": 28,
+        "sentence1": null,
+        "sentence2": "Dear.",
+        "similarity": 0.0,
+        "suggestions": [
+          "This sentence appears in document 2 but not in document 1"
+        ],
+        "diff_html1": null,
+        "diff_html2": null,
+        "explanation": null
+      },
+      {
+        "type": "missing_in_doc1",
+        "classification": "addition",
+        "severity": "high",
+        "position1": null,
+        "position2": 29,
+        "sentence1": null,
+        "sentence2": "God, please help me be part of overcoming evil with good.",
+        "similarity": 0.0,
+        "suggestions": [
+          "This sentence appears in document 2 but not in document 1"
+        ],
+        "diff_html1": null,
+        "diff_html2": null,
+        "explanation": null
+      },
+      {
+        "type": "missing_in_doc1",
+        "classification": "addition",
+        "severity": "high",
+        "position1": null,
+        "position2": 30,
+        "sentence1": null,
+        "sentence2": "BIBLE IN A YEAR PROVERBS 25-26; 2 CORINTHIANS 9",
+        "similarity": 0.0,
+        "suggestions": [
+          "This sentence appears in document 2 but not in document 1"
+        ],
+        "diff_html1": null,
+        "diff_html2": null,
+        "explanation": null
+      }
+    ],
+    "grouped_differences": [
+      {
+        "type": "single",
+        "count": 1,
+        "description": null,
+        "differences": [
+          {
+            "type": "mismatch",
+            "classification": "minor_difference",
+            "severity": "low",
+            "position1": 16,
+            "position2": 16,
+            "sentence1": "His divine strength, places us in the action, and calls us to “overcome evil with good” (v. 21).",
+            "sentence2": "His divine strength, places us in the action, and calls us to\"overcome evil with good\" (V. 21).",
+            "similarity": 0.9985069632530212,
+            "suggestions": [
+              "Character substitutions only (likely OCR)",
+              "Only formatting differs (case, punctuation, spacing)"
+            ],
+            "relocated": false,
+            "diff_html1": "His divine strength, places us in the action, and calls us <del style=\"background:#ffe6e6;\">to “overcome</del> evil with <del style=\"background:#ffe6e6;\">good” (v.</del> 21).",
+            "diff_html2": "His divine strength, places us in the action, and calls us <ins style=\"background:#e6ffe6;\">to&quot;overcome</ins> evil with <ins style=\"background:#e6ffe6;\">good&quot; (V.</ins> 21).",
+            "diff_stats": {
+              "char_changes": 4,
+              "words_changed": 7,
+              "additions": 0,
+              "deletions": 0,
+              "replacements": 3
+            },
+            "explanation": null
+          }
+        ]
+      },
+      {
+        "type": "single",
+        "count": 1,
+        "description": null,
+        "differences": [
+          {
+            "type": "mismatch",
+            "classification": "minor_difference",
+            "severity": "low",
+            "position1": 12,
+            "position2": 12,
+            "sentence1": "Sometimes we fear that the whole world will be “overcome by evil” (ROMANS 12:21).",
+            "sentence2": "Sometimes we fear that the whole world will be \"overcome by evil'\"(ROMANS 12:21).",
+            "similarity": 0.9983769059181213,
+            "suggestions": [
+              "Character substitutions only (likely OCR)",
+              "Only formatting differs (case, punctuation, spacing)"
+            ],
+            "relocated": false,
+            "diff_html1": "Sometimes we fear that the whole world will be <del style=\"background:#ffe6e6;\">“overcome</del> by <del style=\"background:#ffe6e6;\">evil” (ROMANS</del> 12:21).",
+            "diff_html2": "Sometimes we fear that the whole world will be <ins style=\"background:#e6ffe6;\">&quot;overcome</ins> by <ins style=\"background:#e6ffe6;\">evil&#x27;&quot;(ROMANS</ins> 12:21).",
+            "diff_stats": {
+              "char_changes": 3,
+              "words_changed": 5,
+              "additions": 0,
+              "deletions": 0,
+              "replacements": 2
+            },
+            "explanation": null
+          }
+        ]
+      },
+      {
+        "type": "single",
+        "count": 1,
+        "description": null,
+        "differences": [
+          {
+            "type": "mismatch",
+            "classification": "minor_difference",
+            "severity": "low",
+            "position1": 10,
+            "position2": 10,
+            "sentence1": "It’s inspiring to see a person movlng against the menacing, degrading forces that seem too powerful to thwart.",
+            "sentence2": "It's inspiring to see a person movlng against the menacing, degrading forces that seem too powerful to thwart.",
+            "similarity": 0.9981093406677246,
+            "suggestions": [
+              "Character substitutions only (likely OCR)",
+              "Only formatting differs (case, punctuation, spacing)"
+            ],
+            "relocated": false,
+            "diff_html1": "<del style=\"background:#ffe6e6;\">It’s</del> inspiring to see a person movlng against the menacing, degrading forces that seem too powerful to thwart.",
+            "diff_html2": "<ins style=\"background:#e6ffe6;\">It&#x27;s</ins> inspiring to see a person movlng against the menacing, degrading forces that seem too powerful to thwart.",
+            "diff_stats": {
+              "char_changes": 1,
+              "words_changed": 2,
+              "additions": 0,
+              "deletions": 0,
+              "replacements": 1
+            },
+            "explanation": null
+          }
+        ]
+      },
+      {
+        "type": "single",
+        "count": 1,
+        "description": null,
+        "differences": [
+          {
+            "type": "mismatch",
+            "classification": "minor_difference",
+            "severity": "low",
+            "position1": 9,
+            "position2": 9,
+            "sentence1": "Lofting’s way of pushing back against the war’s horror.",
+            "sentence2": "Lofting's way of pushing back against the war's horror.",
+            "similarity": 0.9939458966255188,
+            "suggestions": [
+              "Character substitutions only (likely OCR)",
+              "Only formatting differs (case, punctuation, spacing)"
+            ],
+            "relocated": false,
+            "diff_html1": "<del style=\"background:#ffe6e6;\">Lofting’s</del> way of pushing back against the <del style=\"background:#ffe6e6;\">war’s</del> horror.",
+            "diff_html2": "<ins style=\"background:#e6ffe6;\">Lofting&#x27;s</ins> way of pushing back against the <ins style=\"background:#e6ffe6;\">war&#x27;s</ins> horror.",
+            "diff_stats": {
+              "char_changes": 2,
+              "words_changed": 4,
+              "additions": 0,
+              "deletions": 0,
+              "replacements": 2
+            },
+            "explanation": null
+          }
+        ]
+      },
+      {
+        "type": "single",
+        "count": 1,
+        "description": null,
+        "differences": [
+          {
+            "type": "mismatch",
+            "classification": "minor_difference",
+            "severity": "low",
+            "position1": 7,
+            "position2": 7,
+            "sentence1": "War I. He later said that the war was too awful to recount in his letters—so he wrote and illustrated stories instead.",
+            "sentence2": "War I. He later said that the war was too awful to recount in his letters--so he wrote and illustrated stories instead.",
+            "similarity": 0.9838902950286865,
+            "suggestions": [
+              "Character substitutions only (likely OCR)",
+              "Only formatting differs (case, punctuation, spacing)"
+            ],
+            "relocated": false,
+            "diff_html1": "War I. He later said that the war was too awful to recount in his <del style=\"background:#ffe6e6;\">letters—so</del> he wrote and illustrated stories instead.",
+            "diff_html2": "War I. He later said that the war was too awful to recount in his <ins style=\"background:#e6ffe6;\">letters--so</ins> he wrote and illustrated stories instead.",
+            "diff_stats": {
+              "char_changes": 2,
+              "words_changed": 2,
+              "additions": 0,
+              "deletions": 0,
+              "replacements": 1
+            },
+            "explanation": null
+          }
+        ]
+      },
+      {
+        "type": "single",
+        "count": 1,
+        "description": null,
+        "differences": [
+          {
+            "type": "mismatch",
+            "classification": "minor_difference",
+            "severity": "low",
+            "position1": 3,
+            "position2": 3,
+            "sentence1": "Dolittle, the fictional doctor who converses with ani- mals, has delighted fans through books, movies, and plays.",
+            "sentence2": "Dolittle, the fictional doctor whio converses with ani- mals, has delighted fans through books, movies, and plays.",
+            "similarity": 0.9788932800292969,
+            "suggestions": [
+              "Text added in Doc2"
+            ],
+            "relocated": false,
+            "diff_html1": "Dolittle, the fictional doctor <del style=\"background:#ffe6e6;\">who</del> converses with ani- mals, has delighted fans through books, movies, and plays.",
+            "diff_html2": "Dolittle, the fictional doctor <ins style=\"background:#e6ffe6;\">whio</ins> converses with ani- mals, has delighted fans through books, movies, and plays.",
+            "diff_stats": {
+              "char_changes": 1,
+              "words_changed": 2,
+              "additions": 1,
+              "deletions": 0,
+              "replacements": 0
+            },
+            "explanation": null
+          }
+        ]
+      },
+      {
+        "type": "single",
+        "count": 1,
+        "description": null,
+        "differences": [
+          {
+            "type": "mismatch",
+            "classification": "rewording",
+            "severity": "medium",
+            "position1": 2,
+            "position2": 2,
+            "sentence1": "[ RomANS 12:21 | OVERCOMING EVIL WITH GOOD - octor.",
+            "sentence2": "TUESDAY SEPTEMBER 16 ROMANS 12:21 OVERCOMING EVIL WITH GOOD octor.",
+            "similarity": 0.9343317747116089,
+            "suggestions": [
+              "Length difference: 15 characters",
+              "Text removed in Doc2"
+            ],
+            "relocated": false,
+            "diff_html1": "<del style=\"background:#ffe6e6;\">[ RomANS</del> 12:21 <del style=\"background:#ffe6e6;\">|</del> OVERCOMING EVIL WITH GOOD <del style=\"background:#ffe6e6;\">-</del> octor.",
+            "diff_html2": "<ins style=\"background:#e6ffe6;\">TUESDAY SEPTEMBER 16 ROMANS</ins> 12:21 OVERCOMING EVIL WITH GOOD octor.",
+            "diff_stats": {
+              "char_changes": 26,
+              "words_changed": 8,
+              "additions": 0,
+              "deletions": 2,
+              "replacements": 2
+            },
+            "explanation": null
+          }
+        ]
+      },
+      {
+        "type": "single",
+        "count": 1,
+        "description": null,
+        "differences": [
+          {
+            "type": "mismatch",
+            "classification": "rewording",
+            "severity": "medium",
+            "position1": 1,
+            "position2": 1,
+            "sentence1": "@ROMANS 12:14-21 TUESDAY | SEPTEMBER 16 po not be overcome by evil, put overcome evil with good.",
+            "sentence2": "ROMANS 12:14-21 Do not be overcome by evil, but overcome evil with good.",
+            "similarity": 0.9203267097473145,
+            "suggestions": [
+              "Length difference: 24 characters",
+              "Word count difference: 17 vs 13 words",
+              "Text removed in Doc2"
+            ],
+            "relocated": false,
+            "diff_html1": "<del style=\"background:#ffe6e6;\">@ROMANS</del> 12:14-21 <del style=\"background:#ffe6e6;\">TUESDAY | SEPTEMBER 16 po</del> not be overcome by evil, <del style=\"background:#ffe6e6;\">put</del> overcome evil with good.",
+            "diff_html2": "<ins style=\"background:#e6ffe6;\">ROMANS</ins> 12:14-21 <ins style=\"background:#e6ffe6;\">Do</ins> not be overcome by evil, <ins style=\"background:#e6ffe6;\">but</ins> overcome evil with good.",
+            "diff_stats": {
+              "char_changes": 25,
+              "words_changed": 10,
+              "additions": 0,
+              "deletions": 3,
+              "replacements": 1
+            },
+            "explanation": null
+          }
+        ]
+      },
+      {
+        "type": "single",
+        "count": 1,
+        "description": null,
+        "differences": [
+          {
+            "type": "missing_in_doc2",
+            "classification": "addition",
+            "severity": "high",
+            "position1": 22,
+            "position2": null,
+            "sentence1": "Sorﬁe ﬁf usrs'trlén:erGod‘s story through melody, poetry, or conversa-",
+            "sentence2": null,
+            "similarity": 0.0,
+            "suggestions": [
+              "This sentence appears in document 1 but not in document 2"
+            ],
+            "diff_html1": null,
+            "diff_html2": null,
+            "explanation": null
+          }
+        ]
+      },
+      {
+        "type": "single",
+        "count": 1,
+        "description": null,
+        "differences": [
+          {
+            "type": "missing_in_doc1",
+            "classification": "addition",
+            "severity": "high",
+            "position1": null,
+            "position2": 22,
+            "sentence1": null,
+            "sentence2": "Some of us share.",
+            "similarity": 0.0,
+            "suggestions": [
+              "This sentence appears in document 2 but not in document 1"
+            ],
+            "diff_html1": null,
+            "diff_html2": null,
+            "explanation": null
+          }
+        ]
+      },
+      {
+        "type": "single",
+        "count": 1,
+        "description": null,
+        "differences": [
+          {
+            "type": "missing_in_doc1",
+            "classification": "addition",
+            "severity": "high",
+            "position1": null,
+            "position2": 23,
+            "sentence1": null,
+            "sentence2": "God's story through melody, poetry, or conversa- tion.",
+            "similarity": 0.0,
+            "suggestions": [
+              "This sentence appears in document 2 but not in document 1"
+            ],
+            "diff_html1": null,
+            "diff_html2": null,
+            "explanation": null
+          }
+        ]
+      },
+      {
+        "type": "single",
+        "count": 1,
+        "description": null,
+        "differences": [
+          {
+            "type": "missing_in_doc1",
+            "classification": "addition",
+            "severity": "high",
+            "position1": null,
+            "position2": 24,
+            "sentence1": null,
+            "sentence2": "In a myriad of ways, we carry.",
+            "similarity": 0.0,
+            "suggestions": [
+              "This sentence appears in document 2 but not in document 1"
+            ],
+            "diff_html1": null,
+            "diff_html2": null,
+            "explanation": null
+          }
+        ]
+      },
+      {
+        "type": "single",
+        "count": 1,
+        "description": null,
+        "differences": [
+          {
+            "type": "missing_in_doc1",
+            "classification": "addition",
+            "severity": "high",
+            "position1": null,
+            "position2": 25,
+            "sentence1": null,
+            "sentence2": "His goodness and peace into the world (V. 18), overcoming evil as we go.",
+            "similarity": 0.0,
+            "suggestions": [
+              "This sentence appears in document 2 but not in document 1"
+            ],
+            "diff_html1": null,
+            "diff_html2": null,
+            "explanation": null
+          }
+        ]
+      },
+      {
+        "type": "single",
+        "count": 1,
+        "description": null,
+        "differences": [
+          {
+            "type": "missing_in_doc1",
+            "classification": "addition",
+            "severity": "high",
+            "position1": null,
+            "position2": 26,
+            "sentence1": null,
+            "sentence2": "WINN COLLIER Where do you see evil lurking?",
+            "similarity": 0.0,
+            "suggestions": [
+              "This sentence appears in document 2 but not in document 1"
+            ],
+            "diff_html1": null,
+            "diff_html2": null,
+            "explanation": null
+          }
+        ]
+      },
+      {
+        "type": "single",
+        "count": 1,
+        "description": null,
+        "differences": [
+          {
+            "type": "missing_in_doc1",
+            "classification": "addition",
+            "severity": "high",
+            "position1": null,
+            "position2": 27,
+            "sentence1": null,
+            "sentence2": "How can you be part of overcoming evil with good?",
+            "similarity": 0.0,
+            "suggestions": [
+              "This sentence appears in document 2 but not in document 1"
+            ],
+            "diff_html1": null,
+            "diff_html2": null,
+            "explanation": null
+          }
+        ]
+      },
+      {
+        "type": "single",
+        "count": 1,
+        "description": null,
+        "differences": [
+          {
+            "type": "missing_in_doc1",
+            "classification": "addition",
+            "severity": "high",
+            "position1": null,
+            "position2": 28,
+            "sentence1": null,
+            "sentence2": "Dear.",
+            "similarity": 0.0,
+            "suggestions": [
+              "This sentence appears in document 2 but not in document 1"
+            ],
+            "diff_html1": null,
+            "diff_html2": null,
+            "explanation": null
+          }
+        ]
+      },
+      {
+        "type": "single",
+        "count": 1,
+        "description": null,
+        "differences": [
+          {
+            "type": "missing_in_doc1",
+            "classification": "addition",
+            "severity": "high",
+            "position1": null,
+            "position2": 29,
+            "sentence1": null,
+            "sentence2": "God, please help me be part of overcoming evil with good.",
+            "similarity": 0.0,
+            "suggestions": [
+              "This sentence appears in document 2 but not in document 1"
+            ],
+            "diff_html1": null,
+            "diff_html2": null,
+            "explanation": null
+          }
+        ]
+      },
+      {
+        "type": "single",
+        "count": 1,
+        "description": null,
+        "differences": [
+          {
+            "type": "missing_in_doc1",
+            "classification": "addition",
+            "severity": "high",
+            "position1": null,
+            "position2": 30,
+            "sentence1": null,
+            "sentence2": "BIBLE IN A YEAR PROVERBS 25-26; 2 CORINTHIANS 9",
+            "similarity": 0.0,
+            "suggestions": [
+              "This sentence appears in document 2 but not in document 1"
+            ],
+            "diff_html1": null,
+            "diff_html2": null,
+            "explanation": null
+          }
+        ]
+      }
+    ],
+    "reorderings": [],
+    "merged_sentences": {
+      "merged_in_doc1": [],
+      "merged_in_doc2": []
+    },
+    "recommendations": [
+      "9 sentence(s) appear only in document 2. Check if content was added or if OCR missed these sections.",
+      "1 sentence(s) appear only in document 1. Check if content was removed or if OCR failed.",
+      "Documents have notable content differences. Manual review recommended for important documents."
+    ],
+    "quality_analysis": {
+      "total_matches": 21,
+      "exact_matches": 13,
+      "formatting_only": 0,
+      "number_formatting": 0,
+      "citation_format": 0,
+      "ocr_errors": 0,
+      "minor_differences": 6,
+      "rewordings": 2,
+      "significant_differences": 0,
+      "avg_similarity": 0.99078007822945
+    }
+  }
+}

@@ -1,15 +1,28 @@
 """
 Smart Chunking Module
-Intelligently segments text into sentences for comparison
+Intelligently segments text into sentences with provenance tracking
 """
 
-from typing import List, Dict
+from typing import List, Dict, Optional
 from config import ModelConfig, Config
+import re
 
-
-def chunk_into_sentences(text: str) -> List[Dict[str, any]]:
+def chunk_into_sentences(
+    text: str,
+    provenance: Optional[Dict] = None
+) -> List[Dict[str, any]]:
     """
-    Break text into sentences using spaCy
+    Break text into sentences using spaCy, preserving provenance.
+
+    Args:
+        text: Input text to chunk
+        provenance: Optional provenance data from extractor
+            {
+                "confidence": 0.85,
+                "method": "ocr",
+                "lines": [...],
+                "warnings": [...]
+            }
 
     Returns list of sentence objects with metadata:
     [
@@ -18,7 +31,11 @@ def chunk_into_sentences(text: str) -> List[Dict[str, any]]:
             "text": "This is sentence one.",
             "start_char": 0,
             "end_char": 21,
-            "length": 21
+            "length": 21,
+            "is_split": False,
+            "source": "ocr",  # NEW
+            "confidence": 0.85,  # NEW
+            "line_id": 0,  # NEW (if from OCR line)
         },
         ...
     ]
@@ -45,25 +62,75 @@ def chunk_into_sentences(text: str) -> List[Dict[str, any]]:
             # Split long sentences
             sub_sentences = split_long_sentence(sentence_text)
             for sub_sent in sub_sentences:
-                sentences.append({
+                sentence_dict = {
                     "id": len(sentences),
                     "text": sub_sent,
                     "start_char": sent.start_char,
                     "end_char": sent.end_char,
                     "length": len(sub_sent),
                     "is_split": True
-                })
+                }
+
+                # Add provenance if available
+                if provenance:
+                    sentence_dict.update(_add_provenance_to_sentence(
+                        sentence_dict, provenance, sent.start_char
+                    ))
+
+                sentences.append(sentence_dict)
         else:
-            sentences.append({
+            sentence_dict = {
                 "id": idx,
                 "text": sentence_text,
                 "start_char": sent.start_char,
                 "end_char": sent.end_char,
                 "length": len(sentence_text),
                 "is_split": False
-            })
+            }
 
+            # Add provenance if available
+            if provenance:
+                sentence_dict.update(_add_provenance_to_sentence(
+                    sentence_dict, provenance, sent.start_char
+                ))
+
+            sentences.append(sentence_dict)
+
+    sentences = collapse_name_lists(sentences)
     return sentences
+
+
+def _add_provenance_to_sentence(
+    sentence: Dict,
+    provenance: Dict,
+    char_position: int
+) -> Dict:
+    """
+    Add provenance metadata to a sentence.
+
+    Tries to match sentence to specific OCR line if available.
+    """
+    metadata = {
+        "source": provenance.get("method", "unknown"),
+        "confidence": provenance.get("confidence", 1.0),
+        "line_id": None,
+        "ocr_method": None
+    }
+
+    # Try to match to specific line
+    lines = provenance.get("lines", [])
+    if lines:
+        # Find which line this sentence likely came from
+        # (Simple heuristic: find line whose text is contained in sentence or vice versa)
+        for line in lines:
+            line_text = line.get("text", "")
+            if line_text and (line_text in sentence["text"] or sentence["text"] in line_text):
+                metadata["line_id"] = line.get("line_id")
+                metadata["confidence"] = line.get("confidence", metadata["confidence"])
+                metadata["ocr_method"] = line.get("ocr_method")
+                break
+
+    return metadata
 
 
 def split_long_sentence(sentence: str) -> List[str]:
@@ -71,7 +138,6 @@ def split_long_sentence(sentence: str) -> List[str]:
     Split abnormally long sentences (likely OCR errors)
     at natural break points
     """
-    # Try splitting at semicolons, colons, or multiple spaces
     import re
 
     # First try semicolons
@@ -145,7 +211,7 @@ def normalize_sentence(sentence: str) -> str:
     text = re.sub(r'\s+', ' ', text)
 
     # Strip punctuation from ends
-    text = text.strip(' .,!?;:')
+    text = text.strip(' .,!?;:\'"')
 
     return text
 
@@ -214,17 +280,22 @@ def get_statistics(sentences: List[Dict]) -> Dict:
             "total_sentences": 0,
             "avg_length": 0,
             "min_length": 0,
-            "max_length": 0
+            "max_length": 0,
+            "avg_confidence": 0.0,
+            "low_confidence_count": 0
         }
 
     lengths = [s["length"] for s in sentences]
+    confidences = [s.get("confidence", 1.0) for s in sentences]
 
     return {
         "total_sentences": len(sentences),
         "avg_length": sum(lengths) / len(lengths),
         "min_length": min(lengths),
         "max_length": max(lengths),
-        "total_chars": sum(lengths)
+        "total_chars": sum(lengths),
+        "avg_confidence": sum(confidences) / len(confidences),
+        "low_confidence_count": sum(1 for c in confidences if c < 0.7)
     }
 
 
@@ -242,11 +313,24 @@ if __name__ == "__main__":
     print("Testing smart chunking...")
     print("="*60)
 
-    sentences = chunk_into_sentences(test_text)
+    # Test with mock provenance
+    mock_provenance = {
+        "confidence": 0.85,
+        "method": "ocr",
+        "lines": [
+            {"text": "This is the first sentence.", "confidence": 0.9, "line_id": 0, "ocr_method": "tesseract"},
+            {"text": "This is the second sentence.", "confidence": 0.8, "line_id": 1, "ocr_method": "easyocr"}
+        ]
+    }
+
+    sentences = chunk_into_sentences(test_text, provenance=mock_provenance)
 
     print(f"\nFound {len(sentences)} sentences:\n")
     for sent in sentences:
+        conf = sent.get("confidence", "N/A")
+        method = sent.get("ocr_method", "N/A")
         print(f"[{sent['id']}] {sent['text']}")
+        print(f"  Confidence: {conf}, Method: {method}")
 
     print("\n" + "="*60)
     print("Statistics:")
@@ -254,10 +338,72 @@ if __name__ == "__main__":
     for key, value in stats.items():
         print(f"  {key}: {value}")
 
-    print("\n" + "="*60)
-    print("Paragraph grouping:")
-    paragraphs = group_sentences_by_paragraph(sentences)
-    for i, para in enumerate(paragraphs, 1):
-        print(f"\nParagraph {i} ({len(para)} sentences):")
-        for sent in para:
-            print(f"  - {sent['text'][:50]}...")
+def _is_name_list_line(sentence: Dict) -> bool:
+    """
+    Heuristic to detect legal name / party list lines.
+    """
+    text = sentence["text"].strip()
+
+    # Mostly uppercase
+    if text.upper() != text:
+        return False
+
+    # Short-ish lines
+    if len(text) > 80:
+        return False
+
+    # Ends with number or period (common in counsel lists)
+    if not re.search(r'\d+\.?$', text):
+        return False
+
+    # No verbs (very rough but effective)
+    if re.search(r'\b(is|was|were|are|has|have|held|finds)\b', text.lower()):
+        return False
+
+    return True
+
+
+def collapse_name_lists(sentences: List[Dict]) -> List[Dict]:
+    """
+    Merge consecutive name-list sentences into a single sentence.
+    """
+    collapsed = []
+    buffer = []
+
+    for sent in sentences:
+        if _is_name_list_line(sent):
+            buffer.append(sent)
+        else:
+            if buffer:
+                merged_text = " ".join(s["text"] for s in buffer)
+                first = buffer[0]
+                last = buffer[-1]
+
+                collapsed.append({
+                    **first,
+                    "text": merged_text,
+                    "end_char": last["end_char"],
+                    "length": len(merged_text),
+                    "is_split": True,
+                    "collapsed_count": len(buffer)
+                })
+                buffer = []
+
+            collapsed.append(sent)
+
+    # Flush buffer
+    if buffer:
+        merged_text = " ".join(s["text"] for s in buffer)
+        first = buffer[0]
+        last = buffer[-1]
+
+        collapsed.append({
+            **first,
+            "text": merged_text,
+            "end_char": last["end_char"],
+            "length": len(merged_text),
+            "is_split": True,
+            "collapsed_count": len(buffer)
+        })
+
+    return collapsed

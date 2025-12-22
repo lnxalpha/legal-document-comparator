@@ -26,7 +26,7 @@ class Config:
     DEBUG: bool = os.getenv("DEBUG", "True").lower() == "true"
 
     # File upload settings
-    MAX_UPLOAD_SIZE: int = int(os.getenv("MAX_UPLOAD_SIZE", 10 * 1024 * 1024))  # 10MB
+    MAX_UPLOAD_SIZE: int = int(os.getenv("MAX_UPLOAD_SIZE", 30 * 1024 * 1024))  # 30MB
     ALLOWED_EXTENSIONS: set = {".pdf", ".png", ".jpg", ".jpeg", ".txt", ".doc", ".docx"}
 
     # Model settings

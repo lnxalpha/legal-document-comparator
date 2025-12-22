@@ -14,7 +14,7 @@ window.LDC = window.LDC || {};
    CONSTANTS & CONFIGURATION
 ========================= */
 const CONFIG = {
-    MAX_FILE_SIZE: 10 * 1024 * 1024,
+    MAX_FILE_SIZE: 30 * 1024 * 1024,
     ALLOWED_TYPES: [
         'application/pdf',
         'image/png',

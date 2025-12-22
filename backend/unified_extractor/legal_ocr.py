@@ -47,11 +47,14 @@ def ocr_legal_array(
         }
     """
     from .preprocess import preprocess_image_array, detect_text_line_coordinates
-    from .ocr_engine import OCREngines
     from .correction import apply_ocr_corrections, enhance_with_legal_context
-
-    engines = OCREngines.get_singleton(use_gpu=use_gpu)
-
+    
+    def perform_ocr(img_arr, use_gpu=False):
+        from .ocr_engine import OCREngines
+        engines = OCREngines.get_singleton(use_gpu=False)
+        text, conf = engines.tesseract(img_arr)
+        return text, conf
+    
     # 1️⃣ Preprocess ONLY for line detection
     bin_img = preprocess_image_array(img_arr)
     line_coords = detect_text_line_coordinates(bin_img)
